@@ -1,0 +1,20 @@
+ returnProgressObject←{
+⍝ ⍵ ←→ HtmlRenderer object
+⍝ ← ←→ An object where users can update the progress values
+     obj←⍵
+     ns←⎕NS''
+     ns.obj←obj
+     ns.setProgress←{
+     ⍝ ⍵ ←→ New value to set progress bar to
+         6::'Page terminated'
+         s←⎕THIS.obj.HTML
+         flagStr←'progress value ="'
+         startIndex←⍸flagStr⍷s
+         ss1End←startIndex+≢flagStr
+         endIndices←⍸'"'=s
+         ss2End←endIndices[1⊃startIndex<endIndices]
+         ⎕THIS.obj.HTML←(ss1End↑s),(⍕⍵),ss2End↓s
+         0
+     }
+     ns
+ }

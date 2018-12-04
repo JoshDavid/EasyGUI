@@ -1,0 +1,15 @@
+ renderPage←{
+ ⍝ ⍺ ←→ (Custom Param Namespace)
+ ⍝ ⍵ ←→ (Size)(HtmlFormBuilder Object)
+ ⍝ ← ←→ The user's response (If required)
+     ⍺←''
+     ns←⍺
+     size h←⍵
+     posn←calculateCenterPosn size
+     html←h.getHTML
+     _←'obj'⎕WC'HtmlRenderer'(⍕html)('Coord' 'Prop')('Posn'posn)('Size'size)(stdEvt'')(stdInt'')
+     _←{9=⎕NC'ns':ns obj useCustomParams ⍵ ⋄ 0}⍵
+     h.isForm:returnUserResponse''
+     _←⎕EX'userResponse'
+     obj
+ }

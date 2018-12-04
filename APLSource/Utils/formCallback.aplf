@@ -1,0 +1,10 @@
+ formCallback←{
+ ⍝ This generic callback will close the form and update the user response passed in ⍺
+     postdata←9⊃⍵
+     split←{(⍺≠⍵)⊆⍵}
+     g←'&'split postdata            ⍝ Split by '&'
+     v←{(1+⍸'='⍷⍵)↓⍵}¨g             ⍝ Split string by '='
+     userResponse.Query←{''≡∊⍵:¯1 ⋄ ⍵}v
+     userResponse.Query←userResponse.ResultType{('Int'≡⍺):⍎⍕⍵ ⋄ ⍵}userResponse.Query
+     _←⎕NQ obj'Close'
+ }

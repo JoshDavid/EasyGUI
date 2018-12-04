@@ -1,0 +1,9 @@
+ updateHtmlRendererPage←{
+     hr←f.hr
+     obj←hr.Form
+     fn←{⊃⍵.SelItems/⍵.Items}f.sf.fns.list
+     params←f.sf.params.input.Text
+     params←' '##.##.Utils.split params
+     _←(obj.⍎fn)params       ⍝ Perform operation
+     hr.HTML←obj.getHTML
+ }

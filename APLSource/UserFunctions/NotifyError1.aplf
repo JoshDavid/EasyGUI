@@ -1,0 +1,4 @@
+ {r}←{a}NotifyError1 w
+ ⎕PATH←'##.Utils'
+ a←''
+ r←a Notify'Danger'w

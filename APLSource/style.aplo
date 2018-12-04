@@ -1,0 +1,5 @@
+ style←{
+     h←⎕NEW HtmlFormBuilder'title'
+     _←h.addStyle ⍺⍺
+     ⍵⍵ ⍵
+ }

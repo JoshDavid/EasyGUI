@@ -1,0 +1,7 @@
+ setupUserResponse←{
+ ⍝ ⍵ ←→ Result Type. {Char,Int}
+     ns←'userResponse'⎕NS''
+     userResponse.Query←¯1
+     userResponse.ResultType←⍵
+     0
+ }

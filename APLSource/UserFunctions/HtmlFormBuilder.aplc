@@ -1,0 +1,192 @@
+:Class HtmlFormBuilder   
+    :field private HEAD←''
+    :field private STYLE←''
+    :field private HEADING←''
+    :field private BODY←''  
+    :field private SCRIPT←''
+    :field private divCounter←¯1
+    :field private groupCounter←¯1 
+    :field private closeDiv←'</div>' 
+    :field public isForm←1 ⍝ Default yes      
+
+    ⎕IO←0
+
+    ∇ make
+      :Implements constructor 
+      :Access public  
+    ∇  
+    
+    ∇ make1 form
+      :Implements constructor 
+      :Access public  
+      isForm←form
+    ∇      
+    
+    ∇ {r}←addStyle style
+      :Access public   
+      style←⍕style
+      STYLE,←style
+      r←0
+    ∇  
+    
+    ∇ {r}←addJavaScript script
+      :Access public
+      SCRIPT,←script
+      r←0
+    ∇
+
+    ∇ r←getHTML;tempH;tempB;formStart;formEnd;tempS
+      :Access public
+      ⍝ We do not overwrite the fields so that we can continue to add to the page after this call  
+      tempH←HEAD,'style' wrapTag STYLE
+      tempH←'head' wrapTag tempH 
+      formStart formEnd ← ⊂''  
+      :If isForm
+        formStart←'<form method="post" action="cb" id="mainForm">'
+        formEnd←'<input type="submit" value="Submit"></form>'
+      :EndIf
+      tempS← 'script' wrapTag SCRIPT
+      tempB←'body' wrapTag (HEADING,formStart,BODY,formEnd,tempS)
+      r←'html' wrapTag (tempH,tempB) 
+    ∇    
+    
+    ∇ {r}←addTitle title
+      :Access public
+      HEAD,←'title' wrapTag title
+      r←0
+    ∇
+   
+    ∇ {r}←{t} addHeading msg;header;h
+      :Access public    
+      :If msg≢''
+        msg←⍕msg
+        h←{(2=⎕NC't'):t ⋄ ⍵}'h3'  
+        header← h wrapTag msg      
+        HEADING←'header' wrapTag header,HEADING
+        ⍝ Keep the inputted header at the FRONT   
+      :EndIf
+      r←0
+    ∇   
+
+    ∇ {r}←addRadioInput args;name;label;i;labels;values;gname 
+      :Access public  
+      values labels← args  
+      BODY,←openNewDiv
+      i←0    
+      gname←createNewGroup
+      :For label :In labels
+        BODY,←'<input type="radio" autofocus name="',gname
+        BODY,←'" value="',⍕i⊃values
+        BODY,←'">',⍕label    
+        BODY,←'<br>'
+        i+←1          
+      :EndFor 
+      BODY,←closeDiv
+      r←0
+    ∇  
+    
+    ∇ {r}←addSelectInput args;i;label;w;gname   
+      :Access public 
+      BODY,←openNewDiv 
+      gname←createNewGroup
+      BODY,←'<select autofocus name="',gname
+      BODY,←'" form="mainForm">'
+      i←0      
+      :For label :In args                 
+        BODY,←'<option value ="',(⍕i),'">'
+        BODY,←(⍕label),'</option>' 
+        i+←1
+      :EndFor 
+      BODY,←'</select>'
+      BODY,←closeDiv
+      r←0
+    ∇   
+    
+    ∇ {r}←addCheckboxInput args;label;i;gname  
+      :Access public
+      BODY,←openNewDiv 
+      gname←createNewGroup  
+      i←0
+      :For label :In args
+        BODY,←'<input type ="checkbox" name="',gname
+        BODY,←'" value="',(⍕i),'">',(⍕label),'<br>'
+        i+←1 
+      :EndFor
+      BODY,←closeDiv
+      r←0
+    ∇  
+
+    ∇ {r}←type addNotification msg;types;colors
+      ⍝ Based off W3's notification examples
+      :Access public
+      types←'Danger' 'Success' 'Info' 'Warning'
+      colors←'#f44336' '#4CAF50' '#2196F3' '#ff9800'
+      ⍝ STYLE,←'.alert{padding: 20px;'
+      STYLE,←'body{padding: 20px;'
+      STYLE,←'background-color: ',⍕colors[⍸types∊⊂type]
+      STYLE,←'; color: white;}'
+      BODY,←'<div class ="alert">'
+      BODY,←'strong' wrapTag msg
+      BODY,←'</div>'
+      r←0
+    ∇   
+    
+    ∇ {r}←{label} addProgressBar args;l;start;max
+      :Access public 
+      start max← args   
+      l←{(2=⎕NC'label'):label ⋄ ⍵}''  
+      BODY,←l  
+      BODY,←'<progress value ="',⍕start
+      BODY,←'" max ="',(⍕max),'"></progress>'
+      r←0 
+    ∇  
+     
+    ∇ {r}←addTextInput args;label;gname   
+      :Access public  
+      ⍝labels← nestIfScalar args   
+      gname←createNewGroup
+      :For label :In args
+        BODY,←label,'<br>'
+        BODY,←'<input type="text" name="',gname,'"><br>'
+      :EndFor
+      r←0
+    ∇     
+     
+    ∇ {r}←addDateInput args;label;gname
+      :Access public
+      ⍝ modularize this bit! Seen in many diff functions  
+      gname←createNewGroup
+      :For label :In args
+        BODY,←label
+        BODY,←'<input type="date" name="',gname,'"><br>' 
+      :EndFor
+      r←0
+    ∇
+    
+    ∇ {r}←section addHTML html
+      :Access public
+      'section' ⍎ '← html' 
+      r←0
+    ∇ 
+
+    ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
+    ⍝ Private Utility Functions ⍝
+    ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
+     
+    wrapTag←{'<',⍺,'>',⍵,'</',⍺,'>'} 
+    
+    ∇ r←openNewDiv
+      divCounter+←1
+      r←'<div id ="div',(⍕divCounter),'">'
+    ∇  
+   
+    ∇ r←createNewGroup
+      groupCounter+←1
+      r←'g',⍕groupCounter
+    ∇
+    
+    ⍝ Add a check for int/char data. Maybe. 
+    nestIfScalar←{(1>≡⍵):⊂⍵⋄⍵}
+
+:EndClass
+

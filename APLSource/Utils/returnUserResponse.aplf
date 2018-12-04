@@ -1,0 +1,6 @@
+ returnUserResponse←{
+     _←obj.Wait
+     r←userResponse.Query
+     _←⎕EX'userResponse'
+     r
+ }

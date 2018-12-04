@@ -1,0 +1,12 @@
+ makeParamList←{
+     t←'addCheckboxInput' 'Options'
+     t,←('addDateInput')('Items' 'Min' 'Max')
+     t,←'addHeading' 'Header'
+     t,←'addJavaScript' 'Script'
+     t,←'addRadioInput' 'Options'
+     t,←'addSelectInput' 'Options'
+     t,←'addStyle' 'CSS'
+     t,←'addTextInput' 'Labels'
+     t,←'addTitle' 'Title'
+     t
+ }

@@ -1,0 +1,4 @@
+ stdInt←{
+ ⍝ Standard Intercept Protocol. Relies on V.17
+     'InterceptedURLs'(1 2⍴'*' 1)
+ }

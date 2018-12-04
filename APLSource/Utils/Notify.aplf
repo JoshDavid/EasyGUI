@@ -1,0 +1,11 @@
+ Notify←{
+ ⍝ Creates a page to warn the user with a message
+ ⍝  ⍵ {Warning,Success,Info,Danger}
+     ⍺←''
+     type msg←⍕¨⍵
+     _←setupUserResponse''
+     h←⎕NEW ##.UserFunctions.HtmlFormBuilder 0
+     _←type h.addNotification msg
+     size←20 20
+     ⍺ renderPage size h
+ }

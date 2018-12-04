@@ -1,0 +1,6 @@
+ NotifyError←{
+ ⍝ ⍵ ←→ Error message you want displayed
+     ⎕PATH←'##.Utils'
+     ⍺←''
+     r←⍺ Notify'Danger'⍵
+ }

@@ -1,0 +1,6 @@
+ updateParameterList←{
+     l←⊃⍵
+     p←getParametersFor l.SelItems/l.Items
+     input←⍎'f.sf.params.input'⎕WC'Edit'('Style' 'Single')
+     input.Cue←⍕p
+ }

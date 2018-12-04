@@ -1,0 +1,15 @@
+ useCustomParams←{
+⍝ ⍵ ←→ (Size)(HtmlFormBuilder Object)
+⍝ ⍺ ←→ (Custom Param Namespace)(HTMLRenderer Object)
+     ns obj←⍺
+     size h←⍵
+     obj.Coord←ns.Coord
+     obj.Size←⍎⍕ns.Size
+     obj.Posn←⍎⍕ns.Posn
+     _←h.addTitle ns.Title
+     _←h.addHeading ns.Header
+     _←h.addStyle ns.CSS
+     _←h.addJavaScript ns.JavaScript
+     obj.HTML←h.getHTML
+     0
+ }

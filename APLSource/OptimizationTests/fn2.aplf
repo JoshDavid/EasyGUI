@@ -1,0 +1,12 @@
+ z←fn2 args;before;i;w;c;_;after;str
+ before←60 1000⊥5↓⎕TS
+ i←0
+ w←args
+ str←''
+ :Repeat
+     c←⍕i⊃w
+     str,←'hi',i
+     i+←1
+ :Until i=≢w
+ after←60 1000⊥5↓⎕TS
+ z←after-before

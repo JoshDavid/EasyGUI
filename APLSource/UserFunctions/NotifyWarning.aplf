@@ -1,0 +1,6 @@
+ NotifyWarning←{
+ ⍝ Warning message you want displayed
+     ⎕PATH←'##.Utils'
+     ⍺←''
+     ⍺ Notify'Warning'⍵
+ }

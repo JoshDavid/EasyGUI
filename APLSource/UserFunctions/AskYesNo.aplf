@@ -1,0 +1,15 @@
+ AskYesNo←{
+ ⍝ ⍺ ←→ Parameter namespace
+ ⍝ ⍵ ←→ A simple character array stating the Yes/No message you want answered
+ ⍝ ← ←→ 1 if the User submits 'Yes'
+ ⍝      0 if the User submits 'No'
+ ⍝     ¯1 if the User closes without submitting
+     ⎕PATH←'##.Utils'
+     ⍺←''
+     _←setupUserResponse'Int'
+     h←⎕NEW HtmlFormBuilder 1
+     _←h.addHeading ⍵
+     _←h.addRadioInput(1 0)('Yes' 'No')
+     size←25 20
+     ⍺ renderPage size h
+ }

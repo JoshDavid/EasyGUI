@@ -1,0 +1,14 @@
+ z←fn5 args;before;i;w;c;_;after;str
+ before←60 1000⊥5↓⎕TS
+ i←0
+ w←args
+ :Repeat
+     :Trap 4
+         c←⍕i⊃w
+     :Else
+         c←⍕w
+     :EndTrap
+     i+←1
+ :Until i=≢w
+ after←60 1000⊥5↓⎕TS
+ z←after-before

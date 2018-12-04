@@ -1,0 +1,6 @@
+ getParametersFor←{
+ ⍝ ⍵ ←→ Name of the selected add function
+ ⍝ ← ←→ Parameter(s) that function can take.
+     pList←makeParamList''
+     pList[1+⍸⍵⍷pList]
+ }

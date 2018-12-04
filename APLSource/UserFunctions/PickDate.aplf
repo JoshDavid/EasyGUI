@@ -1,0 +1,12 @@
+ PickDate←{
+ ⍝ ⍵ ←→ Text label to give the user context
+ ⍝ ← ←→ The selected Date in 'YYYY-MM-DD' form
+     ⎕PATH←'##.Utils'
+     ⍺←''
+     _←setupUserResponse'Char'
+     h←⎕NEW HtmlFormBuilder 1
+     w←{1=≡⍵:⊂⍵ ⋄ ⍵}⍵              ⍝ Nest ⍵ if Single item
+     _←h.addDateInput w
+     size←25 15
+     ⍺ renderPage size h
+ }

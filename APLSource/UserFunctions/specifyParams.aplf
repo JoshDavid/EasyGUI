@@ -1,0 +1,23 @@
+ specifyParams←{
+ ⍝ ⍵ ←→ List of labeled arguments to populate ns
+ ⍝ ← ←→ ns that can be supplied to any function to universally as ⍺
+ ⍝      provide additional custom preferences to the pages
+     ⎕PATH←'##.Utils'
+     ns←⎕NS''
+     ns.Title←''
+     ns.CSS←''
+     ns.Header←''
+     ns.JavaScript←''
+     ns.Size←2/25
+     ns.Posn←calculateCenterPosn ns.Size
+     ns.Coord←'Prop'
+     ''≡⍵:ns
+     w←{(2=|≡⍵):⊂⍵ ⋄ ⍵}⍵
+     props←⊃¨w
+     vals←∊¨1↓¨w ⍝ Can't just 1⊃¨ because some fields are vectors e.g. Size
+     ⍝vals←1⌷[1](↑w)
+     ⍝(vals≢∊¨1↓¨w):'fix'
+     q←''''                        ⍝ single quote
+     _←ns⍎⍕props,'←',q,¨vals,¨q    ⍝ assign props
+     ns
+ }

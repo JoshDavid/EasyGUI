@@ -1,0 +1,11 @@
+ SelectOneRadio←{
+ ⍝ ⍵ ←→ List of options to select from
+ ⍝ ← ←→ The index of the User's choice
+     ⎕PATH←'##.Utils'
+     ⍺←''
+     _←setupUserResponse'Int'
+     h←⎕NEW HtmlFormBuilder 1
+     _←h.addRadioInput(⍳≢⍵)⍵
+     size←25 15
+     ⍺ renderPage size h
+ }

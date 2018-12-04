@@ -1,0 +1,7 @@
+ getObjFns←{
+     t←⎕NEW ##.HtmlFormBuilder
+     fns←t.⎕NL-3
+     _←⎕EX't'
+     {('a'=⊃¨⍵)/⍵}fns
+
+ }
