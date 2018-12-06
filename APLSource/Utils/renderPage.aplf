@@ -5,6 +5,7 @@
      ⍺←''
      ns←⍺
      size h←⍵
+     _←{(0=⎕NC'userResponse'):setupUserResponse'' ⋄ 1}0
      posn←calculateCenterPosn size
      html←h.getHTML
      _←'obj'⎕WC'HtmlRenderer'(⍕html)('Coord' 'Prop')('Posn'posn)('Size'size)(stdEvt'')(stdInt'')

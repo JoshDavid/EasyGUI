@@ -1,0 +1,10 @@
+ parsePostData←{
+ ⍝ ⍵ ←→ Postdata
+ ⍝ ← ←→ Group values partitioned by unique group names
+     g←'&'split ⍵                ⍝ Split by '&'
+     names←{(⍸¨'='⍷¨⍵)↑¨⍵}g      ⍝ group names
+     startI←{⍵⍳∪⍵}names          ⍝ Get unique start indices
+     reps←|2-/startI,⍴names      ⍝ replication values
+     p←1+reps/⍳≢startI           ⍝ 1+ to get rid of 0's
+     p⊆(1+≢¨names)↓¨g            ⍝ 1+ to get erase '='
+ }
