@@ -24,8 +24,7 @@
     
     ∇ {r}←addStyle style
       :Access public   
-      style←⍕style
-      STYLE,←style
+      STYLE,←⍕style
       r←0
     ∇  
     

@@ -2,7 +2,7 @@
  start←0
  max←100
  getTime←{60 1000⊥5↓⎕TS}
- ref←##.UserFunctions.thanksgiving ##.UserFunctions.DisplayProgressBar start max
+ ref←##.UserFunctions.DisplayProgressBar start max
  current←start
  last←getTime''
  wait←0
