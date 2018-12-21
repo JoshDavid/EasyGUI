@@ -18,7 +18,7 @@ These functions are designed with minimal styling. All these functions take one,
 
 Parameters enclosed with ‘{}’ are optional arguments.
 
-### PARAMETERS:
+### PARAMETER FUNCTIONS:
 
 ∇ specifyParams ∇
 
