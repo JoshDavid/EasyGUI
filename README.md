@@ -35,9 +35,10 @@ R ←specifyParams args
 
 - Args can be defined as key/value pairs. With the key being a defined property in the namespace (see list above) and the value being the value you wish to populate that property with. Examples:
 
-    R← specifyParams (‘Title’ ‘myTitle’)(‘Size’ 30 30)
-    
-R can be universally passed to any functions below. This includes Queries, Notifications, and Graphics. All the user functions are limited to only one optional argument, and that argument is the result of this function. 
+      R← specifyParams (‘Title’ ‘myTitle’)(‘Size’ 30 30)
+      R.CSS← 'body{background-color:blue}'
+      
+R can be universally passed to any functions below as a left argument. This includes Queries, Notifications, and Graphics. All the user functions are limited to only one optional argument, and that argument is the result of the specifyParams function. 
 
 ### QUERIES:
 
