@@ -14,6 +14,7 @@ These functions are designed with minimal styling. All these functions take one,
 
 ## Reference
 ⎕IO is 0 
+
 Parameters enclosed with ‘{}’ are optional arguments.
 
 ### PARAMETERS:
@@ -41,9 +42,9 @@ R← {p} AskYesNo msg
 
 - P is the namespace result of the ‘specifyParams’ function. P is optional. 
 - R is the result of the function. R is an Integer. 
-  ¯1 : Page was aborted. The page was closed before a response was submitted.
-	0 : ‘No’ was selected
-	1 : ‘Yes’ was selected
+  - ¯1 : Page was aborted. The page was closed before a response was submitted. 
+  -  0 : ‘No’ was selected
+  -  1 : ‘Yes’ was selected
 - Msg is the question you wish to ask the user. 
 
 ∇ PickDate ∇
@@ -65,45 +66,40 @@ R← {p} PromptTextInput labels
 ∇ SelectMultipleCheckbox ∇
 
 R← {p} SelectMultipleCheckbox labels
-P is the namespace result of the ‘specifyParams’ function. P is optional. 
-R is the result of the function. R is indices of the responses selected. If no response is submitted, then ¯1 is returned. R is Integer.  The length of R is equal to the length of labels.
-Labels is a list of labels that will follow each checkbox. Labels can be a vector of items or a single item. 
+- P is the namespace result of the ‘specifyParams’ function. P is optional. 
+- R is the result of the function. R is indices of the responses selected. If no response is submitted, then ¯1 is returned. R is Integer.  The length of R is equal to the length of labels.
+- Labels is a list of labels that will follow each checkbox. Labels can be a vector of items or a single item. 
 
 ∇ SelectOneDropdown ∇
 
 R← {p} SelectOneDropdown options	
-P is the namespace result of the ‘specifyParams’ function. P is optional. 
-R is the result of the function. R is index of the response selected. If no response is submitted, then ¯1 is returned. R is Integer.  The length of R is 1. 
-Options is a list of options to populate the dropdown list with. Only one can be selected.
+- P is the namespace result of the ‘specifyParams’ function. P is optional. 
+- R is the result of the function. R is index of the response selected. If no response is submitted, then ¯1 is returned. R is Integer.  The length of R is 1. 
+- Options is a list of options to populate the dropdown list with. Only one can be selected.
 
 ∇SelectOneRadio ∇ 
 
 R ← {p} SelectOneRadio options
-P is the namespace result of the ‘specifyParams’ function. P is optional. 
-R is the result of the function. R is index of the response selected. If no response is submitted, then ¯1 is returned. R is Integer.  The length of R is 1. 
-Options is a list of options that will follow each radio button.
+- P is the namespace result of the ‘specifyParams’ function. P is optional. 
+- R is the result of the function. R is index of the response selected. If no response is submitted, then ¯1 is returned. R is Integer.  The length of R is 1. 
+- Options is a list of options that will follow each radio button.
 
 ### NOTIFCATIONS:
 
 ∇ NotifyError ∇ 
 
 R ← {p} NotifyError msg
-
-P is the namespace result of the ‘specifyParams’ function. P is optional. 
-
-R is non-existent right now. No result is currently returned. May change this to return a shy result 
-
-Msg is the message you want displayed in the dialog box. This is a dialog box with a red background and white text color. 
+- P is the namespace result of the ‘specifyParams’ function. P is optional. 
+- R is non-existent right now. No result is currently returned. May change this to return a shy result 
+- Msg is the message you want displayed in the dialog box. This is a dialog box with a red background and white text color. 
 
 ∇ NotifyInfo ∇
 
 R ← {p} NotifyInfo msg
 
-P is the namespace result of the ‘specifyParams’ function. P is optional.  
-
-R is nonexistent right now. No result is currently returned. May change this to return a shy result 
-
-Msg is the message you want displayed in the dialog box. This is a dialog box with a blue background and white text color. 
+- P is the namespace result of the ‘specifyParams’ function. P is optional.  
+- R is nonexistent right now. No result is currently returned. May change this to return a shy result 
+- Msg is the message you want displayed in the dialog box. This is a dialog box with a blue background and white text color. 
 
 ∇ NotifySuccess ∇
 
@@ -116,11 +112,9 @@ R ← {p} NotifySuccess msg
 
 R ← {p} NotifyWarning msg
 
-P is the namespace result of the ‘specifyParams’ function. P is optional.  
-
-R is nonexistent right now. No result is currently returned. May change this to return a shy result 
-
-Msg is the message you want displayed in the dialog box. This is a dialog box with an orange background and white text color. 
+- P is the namespace result of the ‘specifyParams’ function. P is optional.  
+- R is nonexistent right now. No result is currently returned. May change this to return a shy result 
+- Msg is the message you want displayed in the dialog box. This is a dialog box with an orange background and white text color. 
 
 ### GRAPHICS:
 
@@ -128,10 +122,7 @@ Msg is the message you want displayed in the dialog box. This is a dialog box wi
 
 R← {p} DisplayProgressBar start max
 
-P is the namespace result of the ‘specifyParams’ function. P is optional. 
-
-R is namespace containing a ‘setProgress’ function which takes a single integer value which will update the progress bar. 
-
-Start is the starting value of the progress bar.
-
-Max is the maximum value of the progress bar. 
+- P is the namespace result of the ‘specifyParams’ function. P is optional. 
+- R is namespace containing a ‘setProgress’ function which takes a single integer value which will update the progress bar. 
+- Start is the starting value of the progress bar.
+- Max is the maximum value of the progress bar. 
