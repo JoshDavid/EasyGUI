@@ -22,16 +22,20 @@ Parameters enclosed with ‘{}’ are optional arguments.
 ∇ specifyParams ∇
 
 R ←specifyParams args
-R is a namespace containing fields that can be set. The namespace has the following properties
--	CSS
--	Coord
--	Header
--	JavaScript
--	Posn
--	Size
--	Title
-Args can be defined as key/value pairs. With the key being a defined property in the namespace (see list above) and the value being the value you wish to populate that property with. Examples:
-	R← specifyParams (‘Title’ ‘myTitle’)(‘Size’ 30 30)
+
+- R is a namespace containing fields that can be set. The namespace has the following properties
+	-	CSS
+	-	Coord
+	-	Header
+	-	JavaScript
+	-	Posn
+	-	Size
+	-	Title
+
+- Args can be defined as key/value pairs. With the key being a defined property in the namespace (see list above) and the value being the value you wish to populate that property with. Examples:
+
+    R← specifyParams (‘Title’ ‘myTitle’)(‘Size’ 30 30)
+    
 R can be universally passed to any functions below. This includes Queries, Notifications, and Graphics. All the user functions are limited to only one optional argument, and that argument is the result of this function. 
 
 ### QUERIES:
