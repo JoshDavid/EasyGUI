@@ -81,7 +81,7 @@ R← {p} SelectOneDropdown options
 - R is the result of the function. R is index of the response selected. If no response is submitted, then ¯1 is returned. R is Integer.  The length of R is 1. 
 - Options is a list of options to populate the dropdown list with. Only one can be selected.
 
-∇SelectOneRadio ∇ 
+∇ SelectOneRadio ∇ 
 
 R ← {p} SelectOneRadio options
 - P is the namespace result of the ‘specifyParams’ function. P is optional. 
