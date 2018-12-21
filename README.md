@@ -1,7 +1,7 @@
 # CEF_Utility
-This is a lightweight utility library which creates dynamic GUI pages on the CEF (Chromium Embedded Framework) using the HtmlRenderer framework in Dyalog V.17. This allows for cross-platform compatible GUI pages (Pages generated will be displayed on Windows and Mac OS platforms. Hopefully Linux with V.17.1) To run this, all you need is Dyalog Version 17. You can download the files using acre desktop. Which can be downloaded for free by clicking [here](https://github.com/the-carlisle-group/Acre-Desktop/releases/tag/v5.0.0.074) 
+This is a lightweight utility library which creates dynamic GUI pages on the CEF (Chromium Embedded Framework) using the HtmlRenderer framework in Dyalog V.17. This allows for cross-platform compatible GUI pages (Pages generated will be displayed on Windows and Mac OS platforms -- hopefully Linux with V.17.1) To run this, all you need is Dyalog Version 17. You can download the files using acre desktop. Which can be downloaded for free by clicking [here](https://github.com/the-carlisle-group/Acre-Desktop/releases/tag/v5.0.0.074) 
 
-Each folder in this repository represents a namespace in the workspace. #.CEF_Utility.UserFunctions are where the userfunctions are stored for use. Each one of these functions creates a dynamic page. These functions can be used in any one of your functions to prompt for user response, or to simply display some information. There are three classes of functions that are provided:
+Each folder in this repository represents a namespace in the workspace. #.CEF_Utility.UserFunctions are where the userfunctions are stored for use. Each one of these functions creates a dynamic page given your input. These functions can be used in any one of your functions to prompt for user response, or to simply display some information. There are three classes of functions that are provided:
 
   * Queries
   * Notifications
@@ -13,6 +13,7 @@ The goal of each function is to produce a single graphical page. If we called a 
 These functions are designed with minimal styling. All these functions take one, optional left argument that is the result of the ‘specifyParams’ function. Use this function to further describe how you want your page styled and other details about the page. 
 
 ## Reference
+
 ⎕IO is 0 
 
 Parameters enclosed with ‘{}’ are optional arguments.
