@@ -12,7 +12,7 @@ The goal of each function is to produce a single graphical page. If we called a 
 
 These functions are designed with minimal styling. All these functions take one, optional left argument that is the result of the ‘specifyParams’ function. Use this function to further describe how you want your page styled and other details about the page. 
 
-## Reference
+## UserFunctions Reference
 
 ⎕IO is 0 
 
@@ -132,3 +132,22 @@ R← {p} DisplayProgressBar start max
 - R is namespace containing a ‘setProgress’ function which takes a single integer value which will update the progress bar. 
 - Start is the starting value of the progress bar.
 - Max is the maximum value of the progress bar. 
+
+## GUI Reference
+
+Inside #.CEF_Utility.UserFunctions is a namespace called 'GUI'. In it is a GUI that helps you build more customized forms. Leveraging the functions in the #.CEF_Utility.UserFunctions.HtmlFormBuilder class, you can build forms with multiple types of input. For example, you can add text fields, date pickers, radio buttons, styling, etc. and capture the result which returns a HtmlFormBuilder object in the namespace, called 'FormObj'. You can then pass this object, along with a form size, to the renderPage function and use it to generate a custom page.
+To access these functions from the GUI ns: 
+
+##.specifyParams
+
+##.##.Utils.renderPage
+
+∇ renderPage ∇
+
+R ← {p} renderPage (size)(FormObj)
+- P is the namespace result of the ‘specifyParams’ function. P is optional. 
+- Size is a 2 item numeric vector of the Y and X values, respectively, that the form should be displayed at. Note that Coord is set to 'Prop' by default, but this could of course be changed by specifying so in p. 
+- FormObj is an HtmlFormBuilder object. If you created a form from the GUI then there will be in object in your GUI namespace called 'FormObj'. You can simply pass this as an argument, or any valid HtmlFormBuilder object. 
+
+
+
