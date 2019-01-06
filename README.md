@@ -148,6 +148,7 @@ R ← {p} renderPage (size)(FormObj)
 - P is the namespace result of the ‘specifyParams’ function. P is optional. 
 - Size is a 2 item numeric vector of the Y and X values, respectively, that the form should be displayed at. Note that Coord is set to 'Prop' by default, but this could of course be changed by specifying so in p. 
 - FormObj is an HtmlFormBuilder object. If you created a form from the GUI then there will be in object in your GUI namespace called 'FormObj'. You can simply pass this as an argument, or any valid HtmlFormBuilder object. 
+- R is the result. R is an array whose length is equal to the number of groups in your form. Every time a FormBuilder function is called, a new group is created. R is partitioned by unique group names. 
 
 
 
