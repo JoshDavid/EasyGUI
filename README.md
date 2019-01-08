@@ -28,10 +28,12 @@ R ←specifyParams args
 	-	CSS
 	-	Coord
 	-	Header
-	-	JavaScript
+	-	*JavaScript*
 	-	Posn
 	-	Size
 	-	Title
+
+**JavaScript* functionality is currently untested. 
 
 - Args can be defined as key/value pairs. With the key being a defined property in the namespace (see list above) and the value being the value you wish to populate that property with. Examples:
 
