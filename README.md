@@ -141,7 +141,7 @@ R← {p} DisplayProgressBar start max
 
 ## GUI Reference
 
-Inside #.CEF_Utility.UserFunctions is a namespace called 'GUI'. In it is a GUI that helps you build more customized forms. Leveraging the functions in the #.CEF_Utility.UserFunctions.HtmlFormBuilder class, you can build forms with multiple types of input. For example, you can add text fields, date pickers, radio buttons, styling, etc. and capture the result which returns a HtmlFormBuilder object in the namespace, called 'FormObj'. You can then pass this object, along with a form size, to the renderPage function and use it to generate a custom page.
+Inside #.CEF_Utility.UserFunctions is a namespace called 'GUI'. In it is a GUI that helps you build more customized forms. Leveraging the functions in the #.CEF_Utility.UserFunctions.HtmlFormBuilder class, you can build forms with multiple types of input. For example, you can add text fields, date pickers, radio buttons, styling, etc. and capture the result which returns a HtmlFormBuilder object in the namespace, called 'FormObj'. You can then pass this object, and a form size, to the renderPage function and use it to generate a custom page. The renderPage function will also accept, as its only left argument, a namespace result from the specifyParams function. 
 To access these functions from the GUI namespace: 
 
 ##.specifyParams
@@ -154,7 +154,7 @@ R ← {p} renderPage (size)(FormObj)
 - P is the namespace result of the ‘specifyParams’ function. P is optional. 
 - Size is a 2 item numeric vector of the Y and X values, respectively, that the form should be displayed at. Note that Coord is set to 'Prop' by default, but this could of course be changed by specifying so in p (the functions left argument). If the size property is already specified in your left argument (p) then the function will honor the size from there and ignore the size on the right argument. 
 - FormObj is an HtmlFormBuilder object. If you created a form from the GUI then there will be in object in your GUI namespace called 'FormObj'. You can simply pass this as an argument, or any valid HtmlFormBuilder object. 
-- R is the result. R is an array whose length is equal to the number of groups in your form. Every time a FormBuilder function is called, a new group is created. R is partitioned by unique group names. 
+- R is the result. If the form is closed before submitting a result, R is ¯1. Otherwise, R is an array whose length is equal to the number of groups in your form. Every time a FormBuilder function is called, a new group is created. R is partitioned by unique group names. 
 
 
 
