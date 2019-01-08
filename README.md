@@ -133,7 +133,9 @@ R ← {p} NotifyWarning msg
 R← {p} DisplayProgressBar start max
 
 - P is the namespace result of the ‘specifyParams’ function. P is optional. 
-- R is namespace containing a ‘setProgress’ function which takes a single integer value which will update the progress bar. 
+- R is namespace containing the following functions:
+  - ‘setProgress’ function which takes a single integer value which will update the progress bar. 
+  - 'close' function which takes a dummy argument to close the form.
 - Start is the starting value of the progress bar.
 - Max is the maximum value of the progress bar. 
 
