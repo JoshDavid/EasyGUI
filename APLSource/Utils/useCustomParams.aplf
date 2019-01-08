@@ -1,11 +1,13 @@
  useCustomParams←{
-⍝ ⍵ ←→ (Size)(HtmlFormBuilder Object)
-⍝ ⍺ ←→ (Custom Param Namespace)(HTMLRenderer Object)
+ ⍝ ⍺ ←→ (Custom Param Namespace)(HTMLRenderer Object)
+ ⍝ ⍵ ←→ (Size)(HtmlFormBuilder Object)
      ns obj←⍺
      size h←⍵
      obj.Coord←ns.Coord
-     obj.Size←⍎⍕ns.Size
-     obj.Posn←⍎⍕ns.Posn
+     ⍝ if size is default (0 0), use size from ⍵
+     obj.Size←{(0=+/⍵)⊃⍵ size}⍎⍕ns.Size
+     ⍝ if Posn is default, center it based on size, else use user specification
+     obj.Posn←⍎⍕(⍬≡ns.Posn)⊃(ns.Posn)(calculateCenterPosn obj.Size)
      _←h.addTitle ns.Title
      _←h.addHeading ns.Header
      _←h.addStyle ns.CSS

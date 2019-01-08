@@ -1,14 +1,15 @@
  renderPage←{
  ⍝ ⍺ ←→ (Custom Param Namespace)
- ⍝ ⍵ ←→ (Size)(HtmlFormBuilder Object)
+ ⍝ ⍵ ←→ (HtmlFormBuilder Object){size}
  ⍝ ← ←→ The user's response (If required)
      ⍺←''
      ns←⍺
      size h←⍵
-     _←{(0=⎕NC'userResponse'):setupUserResponse'' ⋄ 1}0
+     _←{(0=⎕NC'userResponse'):setupUserResponse ⍵ ⋄ ⍵}''
      posn←calculateCenterPosn size
+     coord←(size∨.>100)⊃'Prop' 'Pixel' ⍝ Default to Pixel instead of Coord if a size is > 100
      html←h.getHTML
-     _←'obj'⎕WC'HtmlRenderer'(⍕html)('Coord' 'Prop')('Posn'posn)('Size'size)(stdEvt'')(stdInt'')
+     _←'obj'⎕WC'HtmlRenderer'(⍕html)('Coord'coord)('Posn'posn)('Size'size)(stdEvt'')(stdInt'')
      _←{9=⎕NC'ns':ns obj useCustomParams ⍵ ⋄ 0}⍵
      h.isForm:returnUserResponse''
      _←⎕EX'userResponse'

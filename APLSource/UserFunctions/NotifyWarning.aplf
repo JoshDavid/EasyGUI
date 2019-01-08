@@ -2,5 +2,5 @@
  ⍝ Warning message you want displayed
      ⎕PATH←'##.Utils'
      ⍺←''
-     ⍺ Notify'Warning'⍵
+     r←⍺ Notify'Warning'⍵
  }

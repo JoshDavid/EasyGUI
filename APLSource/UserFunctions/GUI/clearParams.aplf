@@ -1,0 +1,7 @@
+ clearParams←{
+ ⍝ ⍵ ←→ params namespace
+     inputOrLabel←{(('i'⍷⊃¨⍵)∨('t'⍷⊃¨⍵))}⍵.⎕NL-9
+     (~∨/inputOrLabel):0  ⍝ Get out if nothing to delete
+     delete←inputOrLabel/⍵.⎕NL-9
+     ⎕EX⍕¨f.sf.params⍎⍕delete
+ }

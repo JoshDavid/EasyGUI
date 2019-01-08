@@ -16,5 +16,8 @@
          ⎕THIS.obj.HTML←(ss1End↑s),(⍕⍵),ss2End↓s
          0
      }
+     ns.close←{
+         ⎕THIS.obj.Close
+     }
      ns
  }

@@ -1,0 +1,13 @@
+ getUserInputs←{
+ ⍝ ⍵ ←→ list of
+ ⍝ ← ←→ user text inputs
+ ⍝   ←→ shape of result is equal to number of inputs
+     ⎕PATH←'##.##.Utils'
+     inputs←('i'=⊃¨⍵)/⍵
+     text←(f.sf.params⍎⍕inputs).Value
+     ⍝ Treat as one line if matrix (Multi line edit)
+     isMatrix←1<⍴⍴text
+     isMatrix:' '~⍨∊text
+     (1<|≡text):' 'splitIfChar¨text
+     ' 'splitIfChar text
+ }

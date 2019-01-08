@@ -2,5 +2,5 @@
  ⍝ Success message you want displayed
      ⎕PATH←'##.Utils'
      ⍺←''
-     ⍺ Notify'Success'⍵
+     r←⍺ Notify'Success'⍵
  }

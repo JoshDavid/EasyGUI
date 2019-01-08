@@ -1,0 +1,17 @@
+ displayParams←{
+ ⍝ ⍵ ←→ ⊃p
+     ⍺←1
+     _←⍺{⍺=1:clearParams f.sf.params ⋄ 0}''
+     ⍝ Display label and input box in same iteration
+     Y←10×⍺
+     X←10
+     l←{2<≡⍵:⊃⍵ ⋄ ⍵}⍵ ⍝
+     txt←⍎('f.sf.params.t',⍕⍺)⎕WC'Text'((⍺-1)⊃l)(Y X)
+     fObj←⍎'f.font'⎕WC'Font' 'Tahoma'('Coord' 'ScaledPixel')
+     txt.FontObj←fObj
+     isStyleOrScript←(∨/⍵{⍵≡∊⍺}¨'Script' 'CSS')
+     sType←isStyleOrScript⊃'Single' 'Multi'
+     edit←⍎('f.sf.params.i',⍕⍺)⎕WC'Edit'('Style'sType)('Posn'Y 31)
+     ⍺<≢l:(⍺+1)∇ ⍵
+     0
+ }

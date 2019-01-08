@@ -30,7 +30,7 @@
     
     ∇ {r}←addJavaScript script
       :Access public
-      SCRIPT,←script
+      SCRIPT,←⍕script
       r←0
     ∇
 
@@ -51,7 +51,7 @@
     
     ∇ {r}←addTitle title
       :Access public
-      HEAD,←'title' wrapTag title
+      HEAD,←'title' wrapTag ⍕title
       r←0
     ∇
    
@@ -66,51 +66,45 @@
       :EndIf
       r←0
     ∇   
-
-    ∇ {r}←addRadioInput args;name;label;i;labels;values;gname 
+    
+    ∇ {r}←addRadioInput args;s1;s2;s3;labels;values;gname 
       :Access public  
-      values labels← args  
+      values labels ← args  
       BODY,←openNewDiv
-      i←0    
-      gname←createNewGroup
-      :For label :In labels
-        BODY,←'<input type="radio" autofocus name="',gname
-        BODY,←'" value="',⍕i⊃values
-        BODY,←'">',⍕label    
-        BODY,←'<br>'
-        i+←1          
-      :EndFor 
+      gname←createNewGroup  
+      s1←'<input type="radio" name="'
+      s1,←gname,'" value="'
+      s2 s3←'">' '<br>'
+      BODY,← s1 s2 s3 link values labels
       BODY,←closeDiv
       r←0
     ∇  
-    
-    ∇ {r}←addSelectInput args;i;label;w;gname   
-      :Access public 
+
+    ∇ {r}←addSelectInput args;w;gname;s1;s2;s3;labels;values   
+      :Access public    
+      labels←args
+      values←⍳≢labels
       BODY,←openNewDiv 
       gname←createNewGroup
       BODY,←'<select autofocus name="',gname
-      BODY,←'" form="mainForm">'
-      i←0      
-      :For label :In args                 
-        BODY,←'<option value ="',(⍕i),'">'
-        BODY,←(⍕label),'</option>' 
-        i+←1
-      :EndFor 
+      BODY,←'" form="mainForm">'   
+      s1 s2 s3 ←'<option value ="' '">' '</option>'     
+      BODY,← s1 s2 s3 link values labels
       BODY,←'</select>'
       BODY,←closeDiv
       r←0
     ∇   
     
-    ∇ {r}←addCheckboxInput args;label;i;gname  
-      :Access public
+
+    ∇ {r}←addCheckboxInput args;s1;s2;s3;gname;labels;values;w
+      :Access public       
+      labels←args
+      values←⍳≢labels
       BODY,←openNewDiv 
       gname←createNewGroup  
-      i←0
-      :For label :In args
-        BODY,←'<input type ="checkbox" name="',gname
-        BODY,←'" value="',(⍕i),'">',(⍕label),'<br>'
-        i+←1 
-      :EndFor
+      s1←'<input type ="checkbox" name="',gname,'" value="'
+      s2 s3←'">' '<br>'
+      BODY,← s1 s2 s3 link values labels
       BODY,←closeDiv
       r←0
     ∇  
@@ -120,7 +114,6 @@
       :Access public
       types←'Danger' 'Success' 'Info' 'Warning'
       colors←'#f44336' '#4CAF50' '#2196F3' '#ff9800'
-      ⍝ STYLE,←'.alert{padding: 20px;'
       STYLE,←'body{padding: 20px;'
       STYLE,←'background-color: ',⍕colors[⍸types∊⊂type]
       STYLE,←'; color: white;}'
@@ -140,40 +133,32 @@
       r←0 
     ∇  
      
-    ∇ {r}←addTextInput args;label;gname   
+    ∇ {r}←addTextInput args;s1;gname   
       :Access public  
-      ⍝labels← nestIfScalar args   
-      gname←createNewGroup
-      :For label :In args
-        BODY,←label,'<br>'
-        BODY,←'<input type="text" name="',gname,'"><br>'
-      :EndFor
-      r←0
-    ∇     
-     
-    ∇ {r}←addDateInput args;label;gname
-      :Access public
-      ⍝ modularize this bit! Seen in many diff functions  
-      gname←createNewGroup
-      :For label :In args
-        BODY,←label
-        BODY,←'<input type="date" name="',gname,'"><br>' 
-      :EndFor
-      r←0
-    ∇
-    
-    ∇ {r}←section addHTML html
-      :Access public
-      'section' ⍎ '← html' 
+      gname←createNewGroup  
+      s1←'<br><input type="text" name="'
+      s1,←gname,'"><br>'
+      BODY,←∊{⍵,s1}¨args
       r←0
     ∇ 
 
+    ∇ {r}←addDateInput args;gname;s1;s2
+      :Access public
+      gname←createNewGroup 
+      s1←'<input type="date" name="'  
+      s1,←gname,'"><br>' 
+      BODY,←∊{⍵,s1}¨args         
+      r←0
+    ∇       
+    
     ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
     ⍝ Private Utility Functions ⍝
     ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
      
     wrapTag←{'<',⍺,'>',⍵,'</',⍺,'>'} 
     
+    pair←{↓⍺,[.5],⍵}
+     
     ∇ r←openNewDiv
       divCounter+←1
       r←'<div id ="div',(⍕divCounter),'">'
@@ -182,10 +167,25 @@
     ∇ r←createNewGroup
       groupCounter+←1
       r←'g',⍕groupCounter
-    ∇
+    ∇   
     
-    ⍝ Add a check for int/char data. Maybe. 
-    nestIfScalar←{(1>≡⍵):⊂⍵⋄⍵}
+    catenateAll←{
+    ⍝ Use this function with ∇link
+    ⍝ ⍺ ←→ s1..s3
+    ⍝ ⍵ ←→ 2 item pair of a value its label OR just a label
+      givenLabel ← 2=≢⍵
+      value label ← ⍕¨givenLabel⊃ (⍵ '') ⍵ 
+      s1 s2 s3 ← ⍺  
+      ,/ s1 value s2 label s3
+    }
+    
+    link←{
+    ⍝ ⍺ ←→ s1..s3
+    ⍝ ⍵ ←→ values labels
+    ⍝ ← ←→ catenate this string to BODY      
+      values labels ← ⍵ 
+      ∊ ⍺∘catenateAll¨ values pair labels
+    }                      
 
 :EndClass
 

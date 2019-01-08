@@ -2,5 +2,5 @@
  ⍝ ⍵ ←→ Info message you want displayed
      ⎕PATH←'##.Utils'
      ⍺←''
-     ⍺ Notify'Info'⍵
+     r←⍺ Notify'Info'⍵
  }

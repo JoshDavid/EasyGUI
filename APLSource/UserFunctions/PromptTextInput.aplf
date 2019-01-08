@@ -6,7 +6,7 @@
      ⍺←''
      _←setupUserResponse'Char'
      h←⎕NEW HtmlFormBuilder 1
-     ⍝w←{1=≡⍵:⊂⍵ ⋄ ⍵}⍵              ⍝ Nest ⍵ if Single item
+     ⍝w←nestIfSingle ⍵
      _←h.addTextInput ⍵
      size←25 20
      ⍺ renderPage size h

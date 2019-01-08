@@ -21,7 +21,7 @@
  apply←⍎'f.sf.params.applyBtn'⎕WC'Button'
  apply.Caption←'Apply'
  apply.onSelect←'updateHtmlRendererPage'
- apply.Posn←90 0
+ apply.Posn←90 85
  f.sf.params.EdgeStyle←'Groove'
  f.hr.Form←⎕NEW ##.HtmlFormBuilder
  ⎕DQ'.'

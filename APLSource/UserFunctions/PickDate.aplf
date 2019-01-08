@@ -5,8 +5,8 @@
      ⍺←''
      _←setupUserResponse'Char'
      h←⎕NEW HtmlFormBuilder 1
-     w←{1=≡⍵:⊂⍵ ⋄ ⍵}⍵              ⍝ Nest ⍵ if Single item
-     _←h.addDateInput w
+     ⍝w←nestIfSingle ⍵
+     _←h.addDateInput ⍵
      size←25 15
      ⍺ renderPage size h
  }
