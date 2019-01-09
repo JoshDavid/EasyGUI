@@ -1,4 +1,5 @@
  NotifyWarning←{
+ ⍝ ⍺ ←→ Parameter namespace (Optional)
  ⍝ Warning message you want displayed
      ⎕PATH←'##.Utils'
      ⍺←''

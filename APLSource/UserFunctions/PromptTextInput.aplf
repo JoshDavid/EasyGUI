@@ -1,12 +1,11 @@
  PromptTextInput←{
+ ⍝ ⍺ ←→ Parameter namespace (Optional)
  ⍝ ⍵ ←→ n labels for n text boxes
- ⍝      If there is only one item in ⍵, it is enclosed
  ⍝ ← ←→ User input results. Result is of depth 2
      ⎕PATH←'##.Utils'
      ⍺←''
      _←setupUserResponse'Char'
      h←⎕NEW HtmlFormBuilder 1
-     ⍝w←nestIfSingle ⍵
      _←h.addTextInput ⍵
      size←25 20
      ⍺ renderPage size h

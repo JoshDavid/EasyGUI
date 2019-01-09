@@ -1,5 +1,5 @@
  AskYesNo←{
- ⍝ ⍺ ←→ Parameter namespace
+ ⍝ ⍺ ←→ Parameter namespace (Optional)
  ⍝ ⍵ ←→ A simple character array stating the Yes/No message you want answered
  ⍝ ← ←→ 1 if the User submits 'Yes'
  ⍝      0 if the User submits 'No'

@@ -1,4 +1,5 @@
  DisplayProgressBar←{
+ ⍝ ⍺ ←→ Parameter namespace (Optional)
  ⍝ ⍵ ←→ start max
  ⍝      start←The value you want the progress bar to start at
  ⍝      max←The end value for the progress bar
