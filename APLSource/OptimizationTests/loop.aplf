@@ -1,7 +1,0 @@
- loop←{
-
-     h←⎕NEW ##.UserFunctions.HtmlFormBuilder
-     _←h.addDateInputL ⍵
-     h.getHTML
-
- }

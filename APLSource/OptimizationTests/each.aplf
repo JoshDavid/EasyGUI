@@ -1,7 +1,0 @@
- each←{
-
-     h←⎕NEW ##.UserFunctions.HtmlFormBuilder
-     _←h.addDateInput ⍵
-   ⍝  h.getHTML
-
- }
