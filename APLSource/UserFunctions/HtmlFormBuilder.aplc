@@ -172,9 +172,8 @@
     catenateAll←{
     ⍝ Use this function with ∇link
     ⍝ ⍺ ←→ s1..s3
-    ⍝ ⍵ ←→ 2 item pair of a value its label OR just a label
-      givenLabel ← 2=≢⍵
-      value label ← ⍕¨givenLabel⊃ (⍵ '') ⍵ 
+    ⍝ ⍵ ←→ 2 item pair of a value and its label
+      value label ← ⍕¨⍵ 
       s1 s2 s3 ← ⍺  
       ,/ s1 value s2 label s3
     }
