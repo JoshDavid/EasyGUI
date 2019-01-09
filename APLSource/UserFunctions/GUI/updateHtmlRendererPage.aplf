@@ -5,7 +5,8 @@
      fn←{⊃⍵.SelItems/⍵.Items}f.sf.fns.list
      params←getUserInputs f.sf.params.⎕NL-9
      parameterEmpty←0∨.=≢¨params
-     parameterEmpty:##.NotifyError'Populate all parameters!'
+     p←##.specifyParams'Title' 'Error'
+     parameterEmpty:p ##.NotifyError'Populate all parameters!'
      _←(obj.⍎fn)params
      hr.HTML←obj.getHTML
  }
