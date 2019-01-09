@@ -1,5 +1,5 @@
  getUserInputs←{
- ⍝ ⍵ ←→ list of
+ ⍝ ⍵ ←→ list of objects in param subform
  ⍝ ← ←→ user text inputs
  ⍝   ←→ shape of result is equal to number of inputs
      ⎕PATH←'##.##.Utils'

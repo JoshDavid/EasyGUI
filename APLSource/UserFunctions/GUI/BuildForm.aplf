@@ -1,7 +1,8 @@
  r←BuildForm;f;sfSize;hrOffset;apply;list;capture
  ⍝ Build a Windows Page with an HTML renderer page as a child
  ⍝ This page will help you create HTML forms
- ⍝ You may capture the raw HTML generated, or the entire HtmlRenderer object
+ ⍝ Capturing the HTML will update 'FormObj' in the ns.
+ ⍝ FormObj can be passed to the renderPage function in ##.##.Utils
  'f'⎕WC'Form' 'Form Builder'('Coord' 'Prop')('Size' 70 70)
  sfSize←90 30
  'f.sf'⎕WC'SubForm' 'Add Options'('Posn' 0 0)('Size'sfSize)('VScroll' ¯1)
