@@ -8,7 +8,7 @@ Each folder in this repository represents a namespace in the workspace. #.CEF_Ut
   * Graphics
   
   
-The goal of each function is to produce a single graphical page. If we called a query function, the function will wait for the user input and then return the information about their response. The specific response returned will be documented by a function by function basis below. Notification pages will not wait for a response, because no response is needed. A simple dialog box is shown to the users. Graphical pages can return references to update the visuals on the page. These pages will not wait for a response either. 
+The goal of each function is to produce a single graphical page. If we called a query function, the function will wait for the user input and then return the information about their response. The specific response returned will be documented on a function by function basis below. Notification pages will not wait for a response, because no response is needed -- a simple dialog box is shown to the users. Graphical pages can return references to update the visuals on the page. These pages will not wait for a response either. 
 
 These functions are designed with minimal styling. All these functions take one, optional left argument that is the result of the ‘specifyParams’ function. Use this function to further describe how you want your page styled and other details about the page. 
 
