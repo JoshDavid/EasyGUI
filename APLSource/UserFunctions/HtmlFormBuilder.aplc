@@ -142,7 +142,7 @@
       r←0
     ∇ 
 
-    ∇ {r}←addDateInput args;gname;s1;s2
+    ∇ {r}←addDateInput args;gname;s1
       :Access public
       gname←createNewGroup 
       s1←'<input type="date" name="'  
