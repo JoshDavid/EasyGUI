@@ -8,7 +8,7 @@ Each folder in this repository represents a namespace in the workspace. #.CEF_Ut
   * Graphics
   
   
-The goal of each function is to produce a single graphical page. If we called a query function, the function will wait for the user input and then return the information about their response. The specific response returned will be documented by a function by function basis below. Notification pages will not wait for a response, because no response is needed. A simple dialog box is shown to the users. Graphical pages can return references to update the visuals on the page. These pages will not wait for a response either. 
+The goal of each function is to produce a single graphical page. If we called a query function, the function will wait for the user input and then return the information about their response. The specific response returned will be documented on a function by function basis below. Notification pages will not wait for a response, because no response is needed -- a simple dialog box is shown to the users. Graphical pages can return references to update the visuals on the page. These pages will not wait for a response either. 
 
 These functions are designed with minimal styling. All these functions take one, optional left argument that is the result of the ‘specifyParams’ function. Use this function to further describe how you want your page styled and other details about the page. 
 
@@ -55,7 +55,7 @@ R← {p} AskYesNo msg
   - ¯1 : Page was aborted. The page was closed before a response was submitted. 
   -  0 : ‘No’ was selected
   -  1 : ‘Yes’ was selected
-- Msg is the question you wish to ask the user. 
+- Msg is the question you wish to ask the user. Msg can be a vector of items or a single item. Character, Numeric, or Mixed. Msg will be formatted to one string.
 
 ∇ PickDate ∇
 
@@ -63,7 +63,7 @@ R←{p} PickDate labels
 
 - P is the namespace result of the ‘specifyParams’ function. P is optional.  
 - R is the result of the function. R is the date returned selected by the User. This date is returned in the 'YYYY-MM-DD' format. R is ¯1 if the page was closed before a response was submitted. R is Character, unless the page was aborted then an Integer ¯1 is returned.  The length of R is equal to the length of labels. 
-- Labels is a list of labels that will precede each date picker object. Labels can be a vector of items or a single item. The function will enclose labels by default if there is only one item, so it is treated as a single string, and not an array of characters. 
+- Labels is a list of labels that will precede each date picker object. Labels can be a vector of items or a single item. Character, Numeric, or Mixed.
 
 ∇ PromptTextInput ∇
 
@@ -71,28 +71,28 @@ R← {p} PromptTextInput labels
 
 - P is the namespace result of the ‘specifyParams’ function. P is optional. 
 - R is the result of the function. R is the response the user has entered and submit into each text input. R is Character, unless the page was aborted then an Integer ¯1 is returned. The length of R is equal to the length of labels.
-- Labels is a list of labels that will precede each text input box. Labels can be a vector of items or a single item. The function will enclose labels by default if there is only one item, so it is treated as a single string, and not an array of characters. 
+- Labels is a list of labels that will precede each text input box. Labels can be a vector of items or a single item. Character, Numeric, or Mixed.
 
 ∇ SelectMultipleCheckbox ∇
 
 R← {p} SelectMultipleCheckbox labels
 - P is the namespace result of the ‘specifyParams’ function. P is optional. 
 - R is the result of the function. R is indices of the responses selected. If no response is submitted, then ¯1 is returned. R is Integer.  The length of R is equal to the length of labels.
-- Labels is a list of labels that will follow each checkbox. Labels can be a vector of items or a single item. 
+- Labels is a list of labels that will follow each checkbox. Labels can be a vector of items or a single item. Character, Numeric, or Mixed. 
 
 ∇ SelectOneDropdown ∇
 
 R← {p} SelectOneDropdown options	
 - P is the namespace result of the ‘specifyParams’ function. P is optional. 
 - R is the result of the function. R is index of the response selected. If no response is submitted, then ¯1 is returned. R is Integer.  The length of R is 1. 
-- Options is a list of options to populate the dropdown list with. Only one can be selected.
+- Options is a list of options to populate the dropdown list with. Only one can be selected. Options can be a vector of items or a single item. Character, Numeric, or Mixed. 
 
 ∇ SelectOneRadio ∇ 
 
 R ← {p} SelectOneRadio options
 - P is the namespace result of the ‘specifyParams’ function. P is optional. 
 - R is the result of the function. R is index of the response selected. If no response is submitted, then ¯1 is returned. R is Integer.  The length of R is 1. 
-- Options is a list of options that will follow each radio button.
+- Options is a list of options that will follow each radio button. Options can be a vector of items or a single item. Character, Numeric, or Mixed. 
 
 ### NOTIFCATIONS:
 
@@ -101,7 +101,9 @@ R ← {p} SelectOneRadio options
 R ← {p} NotifyError msg
 - P is the namespace result of the ‘specifyParams’ function. P is optional. 
 - R is non-existent right now. No result is currently returned. May change this to return a shy result 
-- Msg is the message you want displayed in the dialog box. This is a dialog box with a red background and white text color. 
+- Msg is the message you want displayed in the dialog box. Msg can be a vector of items or a single item. Character, Numeric, or Mixed. Msg will be formatted to one string.
+
+This function displays a dialog box with a red background and white text color. 
 
 ∇ NotifyInfo ∇
 
@@ -109,14 +111,18 @@ R ← {p} NotifyInfo msg
 
 - P is the namespace result of the ‘specifyParams’ function. P is optional.  
 - R is nonexistent right now. No result is currently returned. May change this to return a shy result 
-- Msg is the message you want displayed in the dialog box. This is a dialog box with a blue background and white text color. 
+- Msg is the message you want displayed in the dialog box. Msg can be a vector of items or a single item. Character, Numeric, or Mixed. Msg will be formatted to one string.
+
+This functions displays a dialog box with a blue background and white text color. 
 
 ∇ NotifySuccess ∇
 
 R ← {p} NotifySuccess msg
   * P is the namespace result of the ‘specifyParams’ function. P is optional.  
   * R is nonexistent right now. No result is currently returned. May change this to return a shy result 
-  * Msg is the message you want displayed in the dialog box. This is a dialog box with a green background and white text color. 
+  * Msg is the message you want displayed in the dialog box. Msg can be a vector of items or a single item. Character, Numeric, or Mixed. Msg will be formatted to one string.
+  
+This function displays a dialog box with a green background and white text color. 
 
 ∇ NotifyWarning ∇
 
@@ -124,7 +130,9 @@ R ← {p} NotifyWarning msg
 
 - P is the namespace result of the ‘specifyParams’ function. P is optional.  
 - R is nonexistent right now. No result is currently returned. May change this to return a shy result 
-- Msg is the message you want displayed in the dialog box. This is a dialog box with an orange background and white text color. 
+- Msg is the message you want displayed in the dialog box. Msg can be a vector of items or a single item. Character, Numeric, or Mixed. Msg will be formatted to one string.
+
+This function displays a dialog box with an orange background and white text color. 
 
 ### GRAPHICS:
 
@@ -136,8 +144,8 @@ R← {p} DisplayProgressBar start max
 - R is namespace containing the following functions:
   - ‘setProgress’ function which takes a single integer value which will update the progress bar. 
   - 'close' function which takes a dummy argument to close the form.
-- Start is the starting value of the progress bar.
-- Max is the maximum value of the progress bar. 
+- Start is the starting value of the progress bar. Numeric.
+- Max is the maximum value of the progress bar. Numeric. 
 
 ## GUI Reference
 
@@ -151,6 +159,7 @@ To access these functions from the GUI namespace:
 ∇ renderPage ∇
 
 R ← {p} renderPage (size)(FormObj)
+
 - P is the namespace result of the ‘specifyParams’ function. P is optional. 
 - Size is a 2 item numeric vector of the Y and X values, respectively, that the form should be displayed at. Note that Coord is set to 'Prop' by default, but this could of course be changed by specifying so in p (the functions left argument). If the size property is already specified in your left argument (p) then the function will honor the size from there and ignore the size on the right argument. 
 - FormObj is an HtmlFormBuilder object. If you created a form from the GUI then there will be in object in your GUI namespace called 'FormObj'. You can simply pass this as an argument, or any valid HtmlFormBuilder object. 
