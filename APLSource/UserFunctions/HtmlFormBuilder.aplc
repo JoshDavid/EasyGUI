@@ -62,7 +62,7 @@
         h←{(2=⎕NC't'):t ⋄ ⍵}'h3'  
         header← h wrapTag msg      
         HEADING←'header' wrapTag header,HEADING
-        ⍝ Keep the inputted header at the FRONT   
+        ⍝ Keep the inputted header at the top   
       :EndIf
       r←0
     ∇   
