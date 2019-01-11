@@ -46,7 +46,7 @@
       :EndIf
       tempS← 'script' wrapTag SCRIPT
       tempB←'body' wrapTag (HEADING,formStart,BODY,formEnd,tempS)
-      r←'html' wrapTag (tempH,tempB) 
+      r←⍕'html' wrapTag (tempH,tempB) 
     ∇    
     
     ∇ {r}←addTitle title
@@ -142,7 +142,7 @@
       r←0
     ∇ 
 
-    ∇ {r}←addDateInput args;gname;s1
+    ∇ {r}←addDateInput args;gname;s1;s2
       :Access public
       gname←createNewGroup 
       s1←'<input type="date" name="'  
