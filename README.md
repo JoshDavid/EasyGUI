@@ -149,7 +149,7 @@ R← {p} DisplayProgressBar start max
 
 ## GUI Reference
 
-Inside #.CEF_Utility.UserFunctions is a namespace called 'GUI'. In it is a GUI that helps you build more customized forms. Leveraging the functions in the #.CEF_Utility.UserFunctions.HtmlFormBuilder class, you can build forms with multiple types of input. For example, you can add text fields, date pickers, radio buttons, styling, etc. and capture the result which returns a HtmlFormBuilder object in the namespace, called 'FormObj'. You can then pass this object, and a form size, to the renderPage function and use it to generate a custom page. The renderPage function will also accept, as its only left argument, a namespace result from the specifyParams function. 
+Inside #.CEF_Utility.UserFunctions is a namespace called 'GUI'. In it is a GUI that helps you build more customized forms. Run the niladic 'BuildForm' function to display the GUI. Leveraging the functions in the #.CEF_Utility.UserFunctions.HtmlFormBuilder class, you can build forms with multiple types of input. For example, you can add text fields, date pickers, radio buttons, styling, etc. and capture the result which returns a HtmlFormBuilder object in the namespace, called 'FormObj'. You can then pass this object, and a form size, to the renderPage function and use it to generate a custom page. The renderPage function will also accept, as its only left argument, a namespace result from the specifyParams function. 
 To access these functions from the GUI namespace: 
 
 ##.specifyParams
