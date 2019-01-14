@@ -80,7 +80,7 @@
       r←0
     ∇  
 
-    ∇ {r}←addSelectInput args;w;gname;s1;s2;s3;labels;values   
+    ∇ {r}←addSelectInput args;gname;s1;s2;s3;labels;values   
       :Access public    
       labels←args
       values←⍳≢labels
@@ -96,7 +96,7 @@
     ∇   
     
 
-    ∇ {r}←addCheckboxInput args;s1;s2;s3;gname;labels;values;w
+    ∇ {r}←addCheckboxInput args;s1;s2;s3;gname;labels;values
       :Access public       
       labels←args
       values←⍳≢labels
@@ -133,7 +133,7 @@
       r←0 
     ∇  
      
-    ∇ {r}←addTextInput args;s1;gname   
+    ∇ {r}←addTextInput args;gname;s1   
       :Access public  
       gname←createNewGroup  
       s1←'<br><input type="text" name="'
@@ -142,7 +142,7 @@
       r←0
     ∇ 
 
-    ∇ {r}←addDateInput args;gname;s1;s2
+    ∇ {r}←addDateInput args;gname;s1
       :Access public
       gname←createNewGroup 
       s1←'<input type="date" name="'  
