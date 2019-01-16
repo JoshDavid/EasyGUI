@@ -8,5 +8,5 @@
      h←⎕NEW HtmlFormBuilder 1
      _←h.addTextInput ⍵
      size←25 20
-     ⍺ renderPage size h
+     ⍺ renderPage h size
  }

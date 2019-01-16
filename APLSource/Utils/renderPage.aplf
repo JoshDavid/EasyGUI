@@ -4,13 +4,13 @@
  ⍝ ← ←→ The user's response (If required)
      ⍺←''
      ns←⍺
-     size h←⍵
+     h size←(1=≢⍵)⊃(⍵)(⍵(50 50))      ⍝ Need a size if none given
      _←{(0=⎕NC'userResponse'):setupUserResponse ⍵ ⋄ ⍵}''
      posn←calculateCenterPosn size
      coord←(size∨.>100)⊃'Prop' 'Pixel' ⍝ Default to Pixel instead of Coord if a size is > 100
      html←h.getHTML
      _←'obj'⎕WC'HtmlRenderer'(⍕html)('Coord'coord)('Posn'posn)('Size'size)(stdEvt'')(stdInt'')
-     _←{9=⎕NC'ns':ns obj useCustomParams ⍵ ⋄ 0}⍵
+     _←{9=⎕NC'ns':ns obj useCustomParams ⍵ ⋄ 0}h size
      h.isForm:returnUserResponse''
      _←⎕EX'userResponse'
      obj

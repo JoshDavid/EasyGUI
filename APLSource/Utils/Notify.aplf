@@ -1,4 +1,4 @@
-﻿ Notify←{
+ Notify←{
  ⍝ Creates a page to warn the user with a message
  ⍝ ⍵ ←→ Is one of these strings: {Warning,Success,Info,Danger}
      ⍺←''
@@ -7,5 +7,5 @@
      h←⎕NEW ##.UserFunctions.HtmlFormBuilder 0
      _←type h.addNotification msg
      size←20 20
-     ⍺ renderPage size h
+     ⍺ renderPage h size
  }

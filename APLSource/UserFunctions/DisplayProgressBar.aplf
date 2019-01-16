@@ -10,6 +10,6 @@
      h←⎕NEW HtmlFormBuilder 0
      _←h.addProgressBar ⍵
      size←15 15
-     o←⍺ renderPage size h ⍝ Get object back
+     o←⍺ renderPage h size ⍝ Get object back
      returnProgressObject o
  }

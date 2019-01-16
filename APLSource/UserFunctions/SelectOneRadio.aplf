@@ -8,5 +8,5 @@
      h←⎕NEW HtmlFormBuilder 1
      _←h.addRadioInput(⍳≢⍵)⍵
      size←25 15
-     ⍺ renderPage size h
+     ⍺ renderPage h size
  }

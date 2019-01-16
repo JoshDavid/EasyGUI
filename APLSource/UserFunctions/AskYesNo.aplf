@@ -11,5 +11,5 @@
      _←h.addHeading ⍵
      _←h.addRadioInput(1 0)('Yes' 'No')
      size←25 20
-     ⍺ renderPage size h
+     ⍺ renderPage h size
  }

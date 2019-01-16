@@ -1,8 +1,8 @@
  useCustomParams←{
  ⍝ ⍺ ←→ (Custom Param Namespace)(HTMLRenderer Object)
- ⍝ ⍵ ←→ (Size)(HtmlFormBuilder Object)
+ ⍝ ⍵ ←→ (HtmlFormBuilder Object)(Size)
      ns obj←⍺
-     size h←⍵
+     h size←⍵
      obj.Coord←ns.Coord
      ⍝ if size is default (0 0), use size from ⍵
      obj.Size←{(0=+/⍵)⊃⍵ size}⍎⍕ns.Size
