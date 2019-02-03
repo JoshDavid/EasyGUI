@@ -1,0 +1,5 @@
+ getFormAndSize←{
+ ⍝ ⍵ ←→ [Form]|[Form][Size]
+ ⍝ ← ←→ 2 item vector of [Form][Size]
+     (1=≢⍵)⊃(⍵)(⍵(50 50))
+ }

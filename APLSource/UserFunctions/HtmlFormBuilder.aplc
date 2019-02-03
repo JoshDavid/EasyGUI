@@ -1,4 +1,5 @@
-:Class HtmlFormBuilder   
+:Class HtmlFormBuilder     
+    :field private TITLE←''
     :field private HEAD←''
     :field private STYLE←''
     :field private HEADING←''
@@ -11,23 +12,45 @@
 
     ⎕IO←0
 
-    ∇ make
-      :Implements constructor 
+    ∇ make    
       :Access public  
+      :Implements constructor 
     ∇  
-    
-    ∇ make1 form
-      :Implements constructor 
+
+    ∇ make2 fieldValues;fnames;quote
+    ⍝ ⍵ ←→ (1 item boolean indicating isForm or not) |
+    ⍝   (List of field values to copy into this instance)
       :Access public  
-      isForm←form
-    ∇      
+      :Implements constructor 
+      :If 1=≢fieldValues
+        isForm←fieldValues 
+      :Else 
+      ⍝ Assign fields in this object with the passed in values
+        fnames←getFieldNames ''
+        quote←(' ','''')[80=⎕DR¨fieldValues] ⍝ Single quote if char, else blank 
+        ⍎⍕ fnames,'←',quote,¨(parseQuotes¨fieldValues),¨quote    
+      :EndIf
+    ∇    
     
+    ∇ r←clone;fieldValues
+    :Access public
+      ⍝ Make a deep copy of this object
+      fieldValues←⍎¨getFieldNames ''
+      r←⎕NEW HtmlFormBuilder fieldValues
+    ∇                 
+
+    ∇ {r}←setTitle title
+      :Access public                
+      TITLE←'title' wrapTag ⍕title
+      r←0
+    ∇
+
     ∇ {r}←addStyle style
       :Access public   
       STYLE,←⍕style
       r←0
-    ∇  
-    
+    ∇     
+
     ∇ {r}←addJavaScript script
       :Access public
       SCRIPT,←⍕script
@@ -37,7 +60,7 @@
     ∇ r←getHTML;tempH;tempB;formStart;formEnd;tempS
       :Access public
       ⍝ We do not overwrite the fields so that we can continue to add to the page after this call  
-      tempH←HEAD,'style' wrapTag STYLE
+      tempH←HEAD,TITLE,'style' wrapTag STYLE
       tempH←'head' wrapTag tempH 
       formStart formEnd ← ⊂''  
       :If isForm
@@ -48,19 +71,13 @@
       tempB←'body' wrapTag (HEADING,formStart,BODY,formEnd,tempS)
       r←⍕'html' wrapTag (tempH,tempB) 
     ∇    
-    
-    ∇ {r}←addTitle title
-      :Access public
-      HEAD,←'title' wrapTag ⍕title
-      r←0
-    ∇
    
-    ∇ {r}←{t} addHeading msg;header;h
+    ∇ {r}←{t} addHeading msg;header;h;m
       :Access public    
       :If msg≢''
-        msg←⍕msg
+        m←⍕msg
         h←{(2=⎕NC't'):t ⋄ ⍵}'h3'  
-        header← h wrapTag msg      
+        header← h wrapTag m     
         HEADING←'header' wrapTag header,HEADING
         ⍝ Keep the inputted header at the top   
       :EndIf
@@ -158,6 +175,10 @@
     wrapTag←{'<',⍺,'>',⍵,'</',⍺,'>'} 
     
     pair←{↓⍺,[.5],⍵}
+    
+    getFieldNames←{⎕THIS.⎕nl ¯2.2}   
+    
+    parseQuotes←{(''''⎕R'''''')⍕⍵}
      
     ∇ r←openNewDiv
       divCounter+←1

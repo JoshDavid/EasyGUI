@@ -8,7 +8,7 @@
      obj.Size←{(0=+/⍵)⊃⍵ size}⍎⍕ns.Size
      ⍝ if Posn is default, center it based on size, else use user specification
      obj.Posn←⍎⍕(⍬≡ns.Posn)⊃(ns.Posn)(calculateCenterPosn obj.Size)
-     _←h.addTitle ns.Title
+     _←h.setTitle ns.Title
      _←h.addHeading ns.Header
      _←h.addStyle ns.CSS
      _←h.addJavaScript ns.JavaScript
