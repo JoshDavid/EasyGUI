@@ -7,6 +7,6 @@
      t,←'addSelectInput' 'Options'
      t,←'addStyle' 'CSS'
      t,←'addTextInput' 'Labels'
-     t,←'addTitle' 'Title'
+     t,←'addParagraph' 'Paragraph'
      t
  }

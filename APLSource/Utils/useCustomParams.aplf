@@ -12,6 +12,7 @@
      _←h.addHeading ns.Header
      _←h.addStyle ns.CSS
      _←h.addJavaScript ns.JavaScript
+    ⍝ _←h.addHead ns.Head
      obj.HTML←h.getHTML
      0
  }

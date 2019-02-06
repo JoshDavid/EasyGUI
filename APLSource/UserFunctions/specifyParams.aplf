@@ -3,6 +3,7 @@
  ⍝ ← ←→ ns that can be supplied to any function universally as ⍺
  ⍝      provide additional custom preferences to the pages
      ⎕PATH←'##.Utils'
+     parseQuotes←{(''''⎕R'''''')⍕⍵}
      ns←⎕NS''
      ns.Title←''
      ns.CSS←''
@@ -16,6 +17,7 @@
      props←⊃¨w
      vals←∊¨1↓¨w ⍝ Can't just 1⊃¨ because some fields are vectors e.g. Size
      q←''''                        ⍝ single quote
-     _←ns⍎⍕props,'←',q,¨vals,¨q    ⍝ assign props
+     pVals←{1<≢⍵:parseQuotes¨vals ⋄ parseQuotes vals}w
+     _←ns⍎⍕props,'←',q,¨pVals,¨q    ⍝ assign props
      ns
  }
