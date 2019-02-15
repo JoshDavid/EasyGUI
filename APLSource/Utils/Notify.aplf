@@ -3,7 +3,6 @@
  ⍝ ⍵ ←→ Is one of these strings: {Warning,Success,Info,Danger}
      ⍺←''
      type msg←⍕¨⍵
-     _←setupUserResponse''
      h←⎕NEW ##.UserFunctions.HtmlFormBuilder 0
      _←type h.addNotification msg
      size←20 20

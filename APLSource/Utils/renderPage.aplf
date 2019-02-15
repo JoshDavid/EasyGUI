@@ -1,17 +1,25 @@
  renderPage←{
  ⍝ ⍺ ←→ (Custom Param Namespace)
- ⍝ ⍵ ←→ (HtmlFormBuilder Object){size}
+ ⍝ ⍵ ←→ (HtmlFormBuilder Object){size}{responseNS}
  ⍝ ← ←→ The user's response (If required)
      ⍺←''
-     ns←⍺
-     h size←getFormAndSize ⍵
-     _←{(0=⎕NC'userResponse'):setupUserResponse ⍵ ⋄ ⍵}''
+     paramNS←⍺
+     parseArgs←{
+     ⍝ Since size and responseNS are optional, we need to assign them
+     ⍝ If they don't exist
+         h←⊃⍵              ⍝ The form is always the first argument
+         s←⊃(2=≢¨⍵)/⍵      ⍝ Size will be the only 2 item vector
+         s←(0=≡s)⊃s(50 50) ⍝ Default to 50 50 if no size
+         rNS←⊃{1=≢⍵:⍵ ⋄ setupUserResponse''}⍵~h s
+         h s rNS
+     }
+     h size responseNS←parseArgs ⍵
      posn←calculateCenterPosn size
      coord←(size∨.>100)⊃'Prop' 'Pixel' ⍝ Default to Pixel instead of Coord if a size is > 100
      html←h.getHTML
-     _←'obj'⎕WC'HtmlRenderer'(⍕html)('Coord'coord)('Posn'posn)('Size'size)(stdEvt'')(stdInt'')
-     _←{9=⎕NC'ns':ns obj useCustomParams ⍵ ⋄ 0}h.clone size
-     h.isForm:returnUserResponse''
-     _←⎕EX'userResponse'
+     _←'obj'⎕WC'HtmlRenderer'html('Coord'coord)('Posn'posn)('Size'size)(stdEvt responseNS)(stdInt'')
+     _←{9=⎕NC'paramNS':paramNS obj useCustomParams ⍵ ⋄ 0}h.clone size
+     h.isForm:returnUserResponse responseNS
+     _←⎕EX'responseNS'
      obj
  }

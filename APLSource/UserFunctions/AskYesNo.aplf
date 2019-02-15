@@ -6,10 +6,10 @@
  ⍝     ¯1 if the User closes without submitting
      ⎕PATH←'##.Utils'
      ⍺←''
-     _←setupUserResponse'Int'
+     responseNS←setupUserResponse'Int'
      h←⎕NEW HtmlFormBuilder 1
      _←h.addHeading ⍵
      _←h.addRadioInput(1 0)('Yes' 'No')
      size←25 20
-     ⍺ renderPage h size
+     ⍺ renderPage h size responseNS
  }

@@ -4,9 +4,9 @@
  ⍝ ← ←→ The indices of the User's choice
      ⎕PATH←'##.Utils'
      ⍺←''
-     _←setupUserResponse'Int'
+     responseNS←setupUserResponse'Int'
      h←⎕NEW HtmlFormBuilder 1
      _←h.addCheckboxInput ⍵
      size←25 15
-     ⍺ renderPage h size
+     ⍺ renderPage h size responseNS
  }

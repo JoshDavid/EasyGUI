@@ -6,10 +6,9 @@
  ⍝ ← ←→ A reference containing setProgress() to update the progress value
      ⎕PATH←'##.Utils'
      ⍺←''
-     _←setupUserResponse''
      h←⎕NEW HtmlFormBuilder 0
      _←h.addProgressBar ⍵
      size←15 15
-     o←⍺ renderPage h size ⍝ Get object back
+     o←⍺ renderPage h size     ⍝ Get object back
      returnProgressObject o
  }

@@ -1,4 +1,4 @@
  stdEvt←{
  ⍝ Standard event handle protocol
-     'Event' 'HTTPRequest' 'formCallback'
+     'Event' 'HTTPRequest' 'formCallback'⍵
  }

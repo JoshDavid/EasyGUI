@@ -148,11 +148,11 @@
     
     ∇ {r}←{label} addProgressBar args;l;start;max
       :Access public 
-      start max← args   
+      start max←⍕¨args   
       l←{(2=⎕NC'label'):label ⋄ ⍵}''  
       BODY,←l  
-      BODY,←'<progress value ="',⍕start
-      BODY,←'" max ="',(⍕max),'"></progress>'
+      BODY,←'<progress value ="',start
+      BODY,←'" max ="',max,'"></progress>'
       r←0 
     ∇  
      
@@ -162,7 +162,7 @@
       gname←createNewGroup  
       s1←'<br><input type="text" name="'
       s1,←gname,'"><br>'
-      BODY,←∊{⍵,s1}¨args   
+      BODY,←∊{(⍕⍵),s1}¨args   
       BODY,←closeDiv
       r←0
     ∇ 
@@ -173,7 +173,7 @@
       gname←createNewGroup 
       s1←'<input type="date" name="'  
       s1,←gname,'"><br>' 
-      BODY,←∊{⍵,s1}¨args  
+      BODY,←∊{(⍕⍵),s1}¨args  
       BODY,←closeDiv       
       r←0
     ∇       

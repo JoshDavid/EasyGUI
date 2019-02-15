@@ -4,9 +4,9 @@
  ⍝ ← ←→ The selected Date in 'YYYY-MM-DD' form
      ⎕PATH←'##.Utils'
      ⍺←''
-     _←setupUserResponse'Char'
+     responseNS←setupUserResponse'Char'
      h←⎕NEW HtmlFormBuilder 1
      _←h.addDateInput ⍵
      size←25 15
-     ⍺ renderPage h size
+     ⍺ renderPage h size responseNS
  }

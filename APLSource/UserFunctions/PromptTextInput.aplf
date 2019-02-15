@@ -4,9 +4,9 @@
  ⍝ ← ←→ User input results. Result is of depth 2
      ⎕PATH←'##.Utils'
      ⍺←''
-     _←setupUserResponse'Char'
+     responseNS←setupUserResponse'Char'
      h←⎕NEW HtmlFormBuilder 1
      _←h.addTextInput ⍵
      size←25 20
-     ⍺ renderPage h size
+     ⍺ renderPage h size responseNS
  }

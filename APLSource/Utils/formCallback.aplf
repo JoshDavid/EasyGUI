@@ -1,8 +1,9 @@
  formCallback←{
  ⍝ This generic callback will close the form and update the user response passed in ⍺
+ ⍝ ⍺ ←→ User response namespace
      postdata←9⊃⍵
      v←parsePostData postdata
-     userResponse.Query←{''≡∊⍵:¯1 ⋄ ⍵}v
-     userResponse.Query←userResponse.ResultType{('Int'≡⍺):⍎⍕⍵ ⋄ ⍵}userResponse.Query
+     ⍺.Query←{''≡∊⍵:¯1 ⋄ ⍵}v
+     ⍺.Query←⍺.ResultType{('Int'≡⍺):⍎¨⍵ ⋄ ⍵}⍺.Query
      _←⎕NQ obj'Close'
  }

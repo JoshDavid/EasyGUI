@@ -1,6 +1,8 @@
  returnUserResponse←{
+ ⍝ ⍵ ←→ Response ns
+ ⍝ ← ←→ User's input
      _←obj.Wait
-     r←userResponse.Query
-     _←⎕EX'userResponse'
+     r←⍵.Query
+     _←⎕EX'⍵'
      r
  }
