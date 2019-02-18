@@ -1,4 +1,7 @@
-:Class HtmlFormBuilder     
+:Class HtmlFormBuilder 
+:Include ##.Utils
+ ⎕IO←0
+
     :field private TITLE←''
     :field private HEAD←''
     :field private STYLE←''
@@ -9,8 +12,6 @@
     :field private groupCounter←¯1 
     :field private closeDiv←'</div>' 
     :field public isForm←1 ⍝ Default yes      
-
-    ⎕IO←0
 
     ∇ make    
       :Access public  
@@ -27,8 +28,8 @@
       :Else 
       ⍝ Assign fields in this object with the passed in values
         fnames←getFieldNames ''
-        quote←(' ','''')[80=⎕DR¨fieldValues] ⍝ Single quote if char, else blank 
-        ⍎⍕ fnames,'←',quote,¨(parseQuotes¨fieldValues),¨quote    
+        quote←(' ','''')[isChar¨fieldValues] ⍝ Single quote if char, else blank 
+        ⍎⍕ fnames,'←',quote,¨(pairQuotes¨fieldValues),¨quote    
       :EndIf
     ∇    
     
@@ -187,8 +188,6 @@
     pair←{↓⍺,[.5],⍵}
     
     getFieldNames←{⎕THIS.⎕nl ¯2.2}   
-    
-    parseQuotes←{(''''⎕R'''''')⍕⍵}
      
     ∇ r←openNewDiv
       divCounter+←1

@@ -1,4 +1,3 @@
  splitIfChar←{
-     isChar←0=80|⎕DR ⍵
      isChar:⍺ split ⍵ ⋄ ⍵
  }

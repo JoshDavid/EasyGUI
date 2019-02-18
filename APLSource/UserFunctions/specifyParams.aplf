@@ -1,23 +1,9 @@
  specifyParams←{
- ⍝ ⍵ ←→ List of labeled arguments to populate ns
- ⍝ ← ←→ ns that can be supplied to any function universally as ⍺
- ⍝      provide additional custom preferences to the pages
+ ⍝ ⍵ ←→ List of labeled arguments to populate NS
+ ⍝      ('') | 'Key' 'Value' | ('Key1' Value1)..('KeyN' ValueN)
+ ⍝ ← ←→ NS that can be supplied to any UserFunction as ⍺
      ⎕PATH←'##.Utils'
-     parseQuotes←{(''''⎕R'''''')⍕⍵}
-     ns←⎕NS''
-     ns.Title←''
-     ns.CSS←''
-     ns.Header←''
-     ns.JavaScript←''
-     ns.Size←0 0
-     ns.Posn←⍬ ⍝ 0 0 can't be default because it's a valid Posn
-     ns.Coord←'Prop'
-     ''≡⍵:ns
-     w←{(2=|≡⍵):⊂⍵ ⋄ ⍵}⍵
-     props←⊃¨w
-     vals←∊¨1↓¨w ⍝ Can't just 1⊃¨ because some fields are vectors e.g. Size
-     q←''''                        ⍝ single quote
-     pVals←{1<≢⍵:parseQuotes¨vals ⋄ parseQuotes vals}w
-     _←ns⍎⍕props,'←',q,¨pVals,¨q    ⍝ assign props
-     ns
+     ns←setupParamNS''
+     argIsEmpty←''≡⍵
+     argIsEmpty:ns ⋄ ns populateParamNS ⍵
  }
