@@ -1,4 +1,4 @@
- calculateCenterPosn←{
+ defaultPosn←{
 ⍝ ⍵ ←→ given size of the page
 ⍝ ← ←→ The posns you should use to have your page centered
 ⍝ This function assumes you are using 'Prop' as your 'Coord' value
