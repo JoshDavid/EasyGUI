@@ -7,13 +7,11 @@
      ns.setProgress←{
      ⍝ ⍵ ←→ New value to set progress bar to
          6::'Page terminated'
-         s←⎕THIS.obj.HTML
+         html←⎕THIS.obj.HTML
          flagStr←'progress value ="'
-         startIndex←⍸flagStr⍷s
-         ss1End←startIndex+≢flagStr
-         endIndices←⍸'"'=s
-         ss2End←endIndices[1⊃startIndex<endIndices]
-         ⎕THIS.obj.HTML←(ss1End↑s),(⍕⍵),ss2End↓s
+         s←flagStr,'\w*"'       ⍝ Regex search pattern
+         r←flagStr,(⍕⍵),'"'     ⍝ Regex replace pattern
+         ⎕THIS.obj.HTML←(s ⎕R r)html
          0
      }
      ns.close←{
