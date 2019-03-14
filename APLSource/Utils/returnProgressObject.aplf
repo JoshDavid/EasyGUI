@@ -14,7 +14,18 @@
          ⎕THIS.obj.HTML←(s ⎕R r)html
          0
      }
+     ns.setHeader←{
+         6::'Page terminated'
+         html←⎕THIS.obj.HTML
+         ss1EndFlag←'</progress>'
+         ss1←((⍸ss1EndFlag⍷html)+≢ss1EndFlag)↑html
+         header←'<h4>',(⍕⍵),'</h4>'
+         ss2BeginFlag←'<script>'
+         ss2←(⍸ss2BeginFlag⍷html)↓html
+         ⎕THIS.obj.HTML←ss1,header,ss2
+     }
      ns.close←{
+         6::'Page terminated'
          ⎕THIS.obj.Close
      }
      ns

@@ -1,0 +1,25 @@
+ r←TestProgress;ref;f;uf;p;i;max;h;start
+ uf←##.UserFunctions
+ f←uf.DisplayProgressBar
+ p←uf.specifyParams'CSS'ProgressCSS
+ p.Size←25 30
+ max←10
+ start←0
+ ref←p f start max
+ i←start
+ :Repeat
+     h←'Fetching packet ',(⍕i),' of ',(⍕max)
+     r←ref.setProgress i
+     ref.setHeader h
+     :If r≡'Page terminated'
+         :Leave
+     :EndIf
+     ⎕DL 1
+     i←i+1
+ :Until i=1+max
+ ref.setHeader'Download complete'
+ ⎕DL 1
+ ref.close''
+ p.Header←'Thank you, please rate your experience'
+ p.Size←40 40
+ r←p uf.SelectOneRadio 1+⍳5  ⍝ Index returned in ⎕IO 0
