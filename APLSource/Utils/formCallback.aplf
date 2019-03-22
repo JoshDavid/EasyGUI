@@ -3,7 +3,8 @@
  ⍝ ⍺ ←→ User response namespace
      postdata←9⊃⍵
      v←parsePostData postdata
-     ⍺.Query←{''≡∊⍵:¯1 ⋄ ⍵}v
-     ⍺.Query←⍺.ResultType{('Int'≡⍺):⍎¨⍵ ⋄ ⍵}⍺.Query
-     _←⎕NQ obj'Close'
+     isEmptyInput←''≡∊v
+     ⍺.Query←isEmptyInput⊃(v)(¯1)    ⍝ ¯1 if User did not submit input
+     ⍺.Query←⍺.ResultType{('Int'≡⍺):⍎⍕⍵ ⋄ ⍵}⍺.Query
+     ⎕NQ obj'Close'
  }
