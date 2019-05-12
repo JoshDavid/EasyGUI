@@ -17,7 +17,7 @@
      posn←defaultPosn size
      coord←(size∨.>100)⊃'Prop' 'Pixel' ⍝ Default to Pixel instead of Coord if a size is > 100
      html←h.getHTML
-     _←'obj'⎕WC'HtmlRenderer'html('Coord'coord)('Posn'posn)('Size'size)(stdEvt responseNS)(stdInt'')
+     _←'obj'⎕WC'HtmlRenderer'('HTML'html)('Coord'coord)('Posn'posn)('Size'size)(stdEvt responseNS)(stdInt'')
      _←{9=⎕NC'paramNS':paramNS obj useCustomParams ⍵ ⋄ 0}h.clone size
      h.isForm:returnUserResponse responseNS
      _←⎕EX'responseNS'
