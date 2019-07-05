@@ -6,7 +6,7 @@
      w←{(2=|≡⍵):⊂⍵ ⋄ ⍵}⍵
      props←⊃¨w
      vals←∊¨1↓¨w ⍝ Can't just 1⊃¨ because some fields are vectors e.g. Size
-     pVals←{1<≢⍵:pairQuotes¨vals ⋄ pairQuotes vals}w
+     pVals←pairQuotes¨vals
      q←''''                         ⍝ Single quote
      _←ns⍎⍕props,'←',q,¨pVals,¨q    ⍝ assign props
      ns

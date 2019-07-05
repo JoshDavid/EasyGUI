@@ -27,20 +27,20 @@ Parameters enclosed with ‘{}’ are optional arguments.
 R ←specifyParams args
 
 - R is a namespace containing fields that can be set. The namespace has the following properties
-	-	CSS             ⍝ This will be inserted between style tags on the page.
-	-	Coord           ⍝ Coordinate system the page will follow. 'Prop' by default.
+	-	CSS             ⍝ This text will be inserted between 'style' tags in the page.
+	-	Coord           ⍝ Coordinate system the page will follow. 'Prop' by default
 	-	Head            ⍝ This text will be inserted between 'head' tags in the page.
-	-	Header          ⍝ A message to be to be displayed on the page. Defaults to h3. 
+	-	Header          ⍝ A message to be to be displayed on the page. Defaults to h3 
 	-	JavaScript      ⍝ This text will be inserted between 'script' tags in the page.
-	-	Posn				
-	-	Size		
-	-	Title
-	-	BtnCaption
-	-	BtnPosn 
+	-	Posn				    ⍝ Page position. This is a 2 item integer vector of Y and X values, respectively.
+	-	Size		        ⍝ Page size. This is a 2 item integer vector of Y and X values, respectively.
+	-	Title           ⍝ Page title. 
+	-	BtnCaption      ⍝ Submit button caption. Defaults to 'OK'
+	-	BtnPosn         ⍝ Submit button position. Can be any permutation of {top,left,bottom,right}. A common use is 'bottom right'
 
 - Args can be defined as key/value pairs. With the key being a defined property in the namespace (see list above) and the value being the value you wish to populate that property with. Examples:
 
-      R← specifyParams (‘Title’ ‘myTitle’)(‘Size’ 30 30)
+      R←specifyParams (‘Title’ ‘myTitle’)(‘Size’ 30 30)
       R.CSS← 'body{background-color:blue}'
       
 R can be universally passed to any functions below as a left argument. This includes Queries, Notifications, and Graphics. All the user functions are limited to only one optional argument, and that argument is the result of the specifyParams function. 
@@ -99,7 +99,7 @@ R ← {p} SelectOneRadio options
 R ← {p} NotifyError msg
 - P is the namespace result of the ‘specifyParams’ function. P is optional. 
 - R is non-existent right now. No result is currently returned. May change this to return a shy result 
-- Msg is the message you want displayed in the dialog box. Msg can be a vector of items or a single item. Character, Numeric, or Mixed. Msg will be formatted to one string.
+- Msg is the message you want displayed in the dialog box. Msg can be an array of items or a single item. Character, Numeric, or Mixed. If Msg is a matrix, line breaks will be added to each row.
 
 This function displays a dialog box with a red background and white text color. 
 
@@ -109,16 +109,16 @@ R ← {p} NotifyInfo msg
 
 - P is the namespace result of the ‘specifyParams’ function. P is optional.  
 - R is nonexistent right now. No result is currently returned. May change this to return a shy result 
-- Msg is the message you want displayed in the dialog box. Msg can be a vector of items or a single item. Character, Numeric, or Mixed. Msg will be formatted to one string.
+- Msg is the message you want displayed in the dialog box. Msg can be an array of items or a single item. Character, Numeric, or Mixed. If Msg is a matrix, line breaks will be added to each row.
 
 This functions displays a dialog box with a blue background and white text color. 
 
 ∇ NotifySuccess ∇
 
 R ← {p} NotifySuccess msg
-  * P is the namespace result of the ‘specifyParams’ function. P is optional.  
-  * R is nonexistent right now. No result is currently returned. May change this to return a shy result 
-  * Msg is the message you want displayed in the dialog box. Msg can be a vector of items or a single item. Character, Numeric, or Mixed. Msg will be formatted to one string.
+- P is the namespace result of the ‘specifyParams’ function. P is optional.  
+- R is nonexistent right now. No result is currently returned. May change this to return a shy result 
+- Msg is the message you want displayed in the dialog box. Msg can be an array of items or a single item. Character, Numeric, or Mixed. If Msg is a matrix, line breaks will be added to each row.
   
 This function displays a dialog box with a green background and white text color. 
 
@@ -128,7 +128,7 @@ R ← {p} NotifyWarning msg
 
 - P is the namespace result of the ‘specifyParams’ function. P is optional.  
 - R is nonexistent right now. No result is currently returned. May change this to return a shy result 
-- Msg is the message you want displayed in the dialog box. Msg can be a vector of items or a single item. Character, Numeric, or Mixed. Msg will be formatted to one string.
+- Msg is the message you want displayed in the dialog box. Msg can be an array of items or a single item. Character, Numeric, or Mixed. If Msg is a matrix, line breaks will be added to each row.
 
 This function displays a dialog box with an orange background and white text color. 
 

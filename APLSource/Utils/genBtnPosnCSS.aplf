@@ -1,5 +1,6 @@
  genBtnPosnCSS←{
     ⍝ Add this style to make the button appear in any combination of top left bottom right
+     isEmpty ⍵:⍵
      css←'#btn {'
      css,←'position:fixed;'
      css,←'padding:5;'
