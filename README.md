@@ -46,7 +46,7 @@ R ←specifyParams args
 	-	BtnCaption
 		- Submit button caption. Defaults to 'OK'
 	-	BtnPosn
-		 Submit button position. Can be any permutation of {top,left,bottom,right}. A common use is 'bottom right'
+		- Submit button position. Can be any permutation of {top,left,bottom,right}. A common use is 'bottom right'
 
 - Args can be defined as key/value pairs. With the key being a defined property in the namespace (see list above) and the value being the value you wish to populate that property with. Examples:
 
