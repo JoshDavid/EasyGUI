@@ -1,6 +1,7 @@
  useCustomParams←{
  ⍝ ⍺ ←→ (Custom Param Namespace)(HTMLRenderer Object)
  ⍝ ⍵ ←→ (HtmlFormBuilder Object)(Size)
+     eraseLineBreaks←{⍵~⎕UCS 13}
      ns obj←⍺
      h size←⍵
      obj.Coord←ns.Coord
@@ -9,9 +10,12 @@
      ⍝ if Posn is default, center it based on size, else use user specification
      obj.Posn←⍎⍕(⍬≡ns.Posn)⊃(ns.Posn)(defaultPosn obj.Size)
      _←h.setTitle ns.Title
+     _←h.addHead eraseLineBreaks ns.Head
      _←h.addHeading ns.Header
-     _←h.addStyle ns.CSS
-     _←h.addJavaScript ns.JavaScript
+     _←h.addStyle eraseLineBreaks ns.CSS
+     _←h.addJavaScript eraseLineBreaks ns.JavaScript
+     _←h.setBtnCaption ns.BtnCaption
+     _←h.addStyle genBtnPosnCSS' 'split ns.BtnPosn
      obj.HTML←h.getHTML
      0
  }

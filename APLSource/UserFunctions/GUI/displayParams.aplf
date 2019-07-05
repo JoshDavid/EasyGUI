@@ -5,10 +5,9 @@
      ⍝ Display label and input box in same iteration
      Y←10×⍺
      X←10
-     l←{2<≡⍵:⊃⍵ ⋄ ⍵}⍵ ⍝
+     l←{2<≡⍵:⊃⍵ ⋄ ⍵}⍵
      txt←⍎('f.sf.params.t',⍕⍺)⎕WC'Text'((⍺-1)⊃l)(Y X)
-     fObj←⍎'f.font'⎕WC'Font' 'Tahoma'('Coord' 'ScaledPixel')
-     txt.FontObj←fObj
+     txt.FontObj←setFont''
      isStyleOrScript←(∨/⍵{⍵≡∊⍺}¨'Script' 'CSS')
      sType←isStyleOrScript⊃'Single' 'Multi'
      edit←⍎('f.sf.params.i',⍕⍺)⎕WC'Edit'('Style'sType)('Posn'Y 31)

@@ -1,6 +1,8 @@
  Notify←{
  ⍝ Creates a page to warn the user with a message
- ⍝ ⍵ ←→ Is one of these strings: {Warning,Success,Info,Danger}
+ ⍝ ⍵ ←→ 2 item vector containing type and msg
+ ⍝      where type ∊ {Warning,Success,Info,Danger}
+ ⍝      and msg is the message to display
      ⍺←''
      type msg←⍕¨⍵
      h←⎕NEW ##.UserFunctions.HtmlFormBuilder 0

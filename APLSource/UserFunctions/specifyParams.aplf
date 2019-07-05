@@ -4,6 +4,6 @@
  ⍝ ← ←→ NS that can be supplied to any UserFunction as ⍺
      ⎕PATH←'##.Utils'
      ns←setupParamNS''
-     argIsEmpty←''≡⍵
+     argIsEmpty←isEmpty ⍵
      argIsEmpty:ns ⋄ ns populateParamNS ⍵
  }

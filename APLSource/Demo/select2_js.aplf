@@ -1,0 +1,6 @@
+ select2_js←{
+ ⍝ Add this to the script of the document
+     r←'$(document).ready(function() {'
+     r,←'$(''.s2'').select2();});'
+     r
+ }

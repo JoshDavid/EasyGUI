@@ -1,0 +1,5 @@
+ setFont←{
+     fObj←⍎'f.font'⎕WC'Font' 'Tahoma'('Coord' 'ScaledPixel')
+     fObj.Size←15
+     fObj
+ }

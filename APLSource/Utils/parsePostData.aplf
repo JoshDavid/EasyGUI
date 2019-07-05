@@ -4,8 +4,9 @@
      g←'&'split ⍵                ⍝ Split by '&'
      names←(⍸¨'='⍷¨g)↑¨g         ⍝ group names
      startI←{⍵⍳∪⍵}names          ⍝ Get unique start indices
+     numOfGroups←≢startI         ⍝
      reps←|2-/startI,⍴names      ⍝ replication values
-     p←1+reps/⍳≢startI           ⍝ 1+ to get rid of 0's
+     p←1+reps/⍳numOfGroups       ⍝ 1+ to get rid of 0's
      v←p⊆(1+≢¨names)↓¨g          ⍝ 1+ to erase '='
-     (1=≢startI):⊃v ⋄ v          ⍝ If only one group, lose a layer of nesting
+     numOfGroups=1:⊃v ⋄ v        ⍝ If only one group, lose a layer of nesting
  }

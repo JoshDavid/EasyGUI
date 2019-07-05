@@ -1,0 +1,17 @@
+ Select←{
+ ⍝ Creates a page to warn the user with a message
+ ⍝ ⍵ ←→ 2 item vector containing type and options
+ ⍝      where type ∊ {multiple,''}
+ ⍝      and options are the options to list
+     ⍺←''
+     type args←⍵
+     responseNS←setupUserResponse'Int'
+     h←⎕NEW ##.UserFunctions.HtmlFormBuilder 1
+     _←type h.addSelectInput args
+     size←50 30
+     ⍝ Default to select 2 for now
+     _←h.addHead ##.Demo.select2_head''
+     _←h.addJavaScript ##.Demo.select2_js''
+     _←h.addStyle genBtnPosnCSS'bottom' 'right'
+     ⍺ renderPage h size responseNS
+ }

@@ -1,4 +1,6 @@
  stdInt←{
  ⍝ Standard Intercept Protocol. Relies on V.17
-     'InterceptedURLs'(1 2⍴'*' 1)
+     cbURL←'http://dyalog_root/cb' ⍝ URL of the callback
+     tm←1 2⍴cbURL 1               ⍝ Trigger matrix
+     'InterceptedURLs'tm           ⍝ Only intercept the callback
  }

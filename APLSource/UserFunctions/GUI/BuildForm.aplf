@@ -17,6 +17,7 @@
  f.sf.fns.Label←'Select a Function'
  list←⍎'f.sf.fns.list'⎕WC'List'
  list.Items←getObjFns''
+ list.FontObj←setFont''
  list.onSelect←'updateParameterList'
  'f.sf.params'⎕WC'SubForm' 'Parameter Input'('Posn' 50 0)('Size'(50 100))
  apply←⍎'f.sf.params.applyBtn'⎕WC'Button'

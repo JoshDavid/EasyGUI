@@ -7,11 +7,12 @@
     :field private STYLE←''
     :field private HEADING←''
     :field private BODY←''  
-    :field private SCRIPT←''
+    :field private SCRIPT←''  
+    :field private BTN_CAPTION←'OK'
     :field private divCounter←¯1
     :field private groupCounter←¯1 
     :field private closeDiv←'</div>' 
-    :field public isForm←1 ⍝ Default yes      
+    :field public isForm←1 ⍝ Default yes  
 
     ∇ make    
       :Access public  
@@ -24,7 +25,7 @@
       :Access public  
       :Implements constructor 
       :If 1=≢fieldValues
-        isForm←fieldValues 
+        isForm←fieldValues
       :Else 
       ⍝ Assign fields in this object with the passed in values
         fnames←getFieldNames ''
@@ -45,6 +46,18 @@
       TITLE←'title' wrapTag ⍕title
       r←0
     ∇
+     
+    ∇ {r}←setBtnCaption caption
+      :Access public          
+      BTN_CAPTION←(isEmpty caption)⊃caption BTN_CAPTION              
+      r←0
+    ∇
+   
+    ∇ {r}←addHead head
+      :Access public                
+      HEAD,←⍕head
+      r←0
+    ∇   
 
     ∇ {r}←addStyle style
       :Access public   
@@ -72,7 +85,7 @@
       formStart formEnd ← ⊂''  
       :If isForm
         formStart←'<form method="post" action="cb" id="mainForm">'
-        formEnd←'<input type="submit" value="Submit"></form>'
+        formEnd←'<input type="submit" id="btn" value="',BTN_CAPTION,'"></form>'
       :EndIf
       tempS← 'script' wrapTag SCRIPT
       tempB←'body' wrapTag (HEADING,formStart,BODY,formEnd,tempS)
@@ -104,16 +117,17 @@
       r←0
     ∇  
 
-    ∇ {r}←addSelectInput args;gname;s1;s2;s3;labels;values   
+    ∇ {r}←{m}addSelectInput args;gname;s1;s2;s3;labels;values   
       :Access public    
       labels←args
-      values←⍳≢labels
+      values←⍳≢labels 
       BODY,←openNewDiv 
       gname←createNewGroup
-      BODY,←'<select autofocus name="',gname
+      BODY,←'<select ',m,' class="s2" style="width:100%" name="',gname
       BODY,←'" form="mainForm">'   
       s1 s2 s3 ←'<option value ="' '">' '</option>'     
-      BODY,← s1 s2 s3 link values labels
+      BODY,← s1 s2 s3 link values labels  
+   ⍝   BODY,← s1 s2 s3 link labels labels
       BODY,←'</select>'
       BODY,←closeDiv
       r←0
@@ -133,16 +147,18 @@
       r←0
     ∇  
 
-    ∇ {r}←type addNotification msg;types;colors
-      ⍝ Based off W3's notification examples
+    ∇ {r}←type addNotification msg;types;colors;msgBr
+      ⍝ Based off W3's notification examples  
+      ⍝ Matrix input will add line breaks to rows 
       :Access public
       types←'Danger' 'Success' 'Info' 'Warning'
       colors←'#f44336' '#4CAF50' '#2196F3' '#ff9800'
       STYLE,←'body{padding: 20px;'
       STYLE,←'background-color: ',⍕colors[⍸types∊⊂type]
       STYLE,←'; color: white;}'
-      BODY,←'<div class ="alert">'
-      BODY,←'strong' wrapTag msg
+      BODY,←'<div class ="alert">'  
+      msgBr←breakRows msg
+      BODY,←'strong' wrapTag msgBr
       BODY,←'</div>'
       r←0
     ∇   
@@ -184,10 +200,12 @@
     ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
      
     wrapTag←{'<',⍺,'>',⍵,'</',⍺,'>'} 
-    
+
     pair←{↓⍺,[.5],⍵}
     
-    getFieldNames←{⎕THIS.⎕nl ¯2.2}   
+    getFieldNames←{⎕THIS.⎕nl ¯2.2}
+    
+    breakRows←{∊⍵(,⍤1)'<br>'}    
      
     ∇ r←openNewDiv
       divCounter+←1
@@ -214,7 +232,10 @@
     ⍝ ← ←→ catenate this string to BODY      
       values labels ← ⍵ 
       ∊ ⍺∘catenateAll¨ values pair labels
-    }                      
+    }                                 
+    
+
+
 
 :EndClass
 

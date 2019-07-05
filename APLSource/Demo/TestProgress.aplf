@@ -14,8 +14,8 @@
      :If r≡'Page terminated'
          :Leave
      :EndIf
-     ⎕DL 1
-     i←i+1
+     ⎕DL?0
+     i+←1
  :Until i=1+max
  ref.setHeader'Download complete'
  ⎕DL 1
