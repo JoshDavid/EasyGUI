@@ -127,13 +127,11 @@
       BODY,←'" form="mainForm">'   
       s1 s2 s3 ←'<option value ="' '">' '</option>'     
       BODY,← s1 s2 s3 link values labels  
-   ⍝   BODY,← s1 s2 s3 link labels labels
       BODY,←'</select>'
       BODY,←closeDiv
       r←0
     ∇   
     
-
     ∇ {r}←addCheckboxInput args;s1;s2;s3;gname;labels;values
       :Access public       
       labels←args
@@ -234,8 +232,4 @@
       ∊ ⍺∘catenateAll¨ values pair labels
     }                                 
     
-
-
-
 :EndClass
-
