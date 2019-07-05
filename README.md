@@ -26,17 +26,27 @@ Parameters enclosed with ‘{}’ are optional arguments.
 
 R ←specifyParams args
 
-- R is a namespace containing fields that can be set. The namespace has the following properties
-	-	CSS             ⍝ This text will be inserted between 'style' tags in the page.
-	-	Coord           ⍝ Coordinate system the page will follow. 'Prop' by default
-	-	Head            ⍝ This text will be inserted between 'head' tags in the page.
-	-	Header          ⍝ A message to be to be displayed on the page. Defaults to h3 
-	-	JavaScript      ⍝ This text will be inserted between 'script' tags in the page.
-	-	Posn				    ⍝ Page position. This is a 2 item integer vector of Y and X values, respectively.
-	-	Size		        ⍝ Page size. This is a 2 item integer vector of Y and X values, respectively.
-	-	Title           ⍝ Page title. 
-	-	BtnCaption      ⍝ Submit button caption. Defaults to 'OK'
-	-	BtnPosn         ⍝ Submit button position. Can be any permutation of {top,left,bottom,right}. A common use is 'bottom right'
+- R is a namespace containing properties that can be set. The namespace has the following properties
+	-	CSS
+		- This text will be inserted between 'style' tags in the page.
+	-	Coord
+		- Coordinate system the page will follow. 'Prop' by default
+	-	Head
+		- This text will be inserted between 'head' tags in the page.
+	-	Header
+		- A message to be to be displayed on the page. Defaults to h3 
+	-	JavaScript
+		- This text will be inserted between 'script' tags in the page.
+	-	Posn
+		- Page position. This is a 2 item integer vector of Y and X values, respectively.
+	-	Size
+		 - Page size. This is a 2 item integer vector of Y and X values, respectively.
+	-	Title
+		 - Page title. 
+	-	BtnCaption
+		- Submit button caption. Defaults to 'OK'
+	-	BtnPosn
+		 Submit button position. Can be any permutation of {top,left,bottom,right}. A common use is 'bottom right'
 
 - Args can be defined as key/value pairs. With the key being a defined property in the namespace (see list above) and the value being the value you wish to populate that property with. Examples:
 
@@ -77,6 +87,13 @@ R← {p} SelectMultipleCheckbox labels
 - P is the namespace result of the ‘specifyParams’ function. P is optional. 
 - R is the result of the function. R is indices of the responses selected. If no response is submitted, then ¯1 is returned. R is Integer.  The length of R is equal to the length of labels.
 - Labels is a list of labels that will follow each checkbox. Labels can be a vector of items or a single item. Character, Numeric, or Mixed. 
+
+∇ SelectMultipleDropdown ∇
+
+R← {p} SelectMultipleDropdown options	
+- P is the namespace result of the ‘specifyParams’ function. P is optional. 
+- R is the result of the function. R is indices of the responses selected. If no response is submitted, then ¯1 is returned. R is Integer.  The length of R is equal to the length of labels.
+- Options is a list of options to populate the dropdown list with. Only one can be selected. Options can be a vector of items or a single item. Character, Numeric, or Mixed. 
 
 ∇ SelectOneDropdown ∇
 
