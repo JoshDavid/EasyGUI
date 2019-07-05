@@ -27,15 +27,16 @@ Parameters enclosed with ‘{}’ are optional arguments.
 R ←specifyParams args
 
 - R is a namespace containing fields that can be set. The namespace has the following properties
-	-	CSS
-	-	Coord
-	-	Header
-	-	*JavaScript*
-	-	Posn
-	-	Size
+	-	CSS             ⍝ This will be inserted between style tags on the page.
+	-	Coord           ⍝ Coordinate system the page will follow. 'Prop' by default.
+	-	Head            ⍝ This text will be inserted between 'head' tags in the page.
+	-	Header          ⍝ A message to be to be displayed on the page. Defaults to h3. 
+	-	JavaScript      ⍝ This text will be inserted between 'script' tags in the page.
+	-	Posn				
+	-	Size		
 	-	Title
-
-**JavaScript* functionality is currently untested. 
+	-	BtnCaption
+	-	BtnPosn 
 
 - Args can be defined as key/value pairs. With the key being a defined property in the namespace (see list above) and the value being the value you wish to populate that property with. Examples:
 
@@ -54,9 +55,6 @@ R← {p} AskYesNo msg
 - R is the result of the function. R is an Integer. 
   - ¯1 : Page was aborted. The page was closed before a response was submitted. 
   -  0 : ‘No’ was selected
-  -  1 : ‘Yes’ was selected
-- Msg is the question you wish to ask the user. Msg can be a vector of items or a single item. Character, Numeric, or Mixed. Msg will be formatted to one string.
-
 ∇ PickDate ∇
 
 R←{p} PickDate labels
