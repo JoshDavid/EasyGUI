@@ -1,0 +1,10 @@
+ DisplaySVG←{
+ ⍝ ⍺ ←→ Parameter namespace (Optional)
+ ⍝ ⍵ ←→ Rendered svg code
+     ⎕PATH←'##.Utils'
+     ⍺←''
+     h←⎕NEW HtmlFormBuilder 0
+     _←h.addBody ⍵
+     size←70 70
+     ⍺ renderPage h size
+ }

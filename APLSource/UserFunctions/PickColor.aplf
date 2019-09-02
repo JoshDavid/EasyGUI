@@ -1,0 +1,13 @@
+ PickColor←{
+ ⍝ ⍺ ←→ Parameter namespace (Optional)
+ ⍝ ⍵ ←→ Nothing
+ ⍝ ← ←→ Color in HEX.
+ ⍝ This is currently not working
+     ⎕PATH←'##.Utils'
+     ⍺←''
+     responseNS←setupUserResponse'Char'
+     h←⎕NEW HtmlFormBuilder 1
+     _←h.addColorInput⊂'Select a color:'
+     size←25 15
+     ⍺ renderPage h size responseNS
+ }

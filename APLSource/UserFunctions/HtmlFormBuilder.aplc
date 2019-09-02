@@ -63,7 +63,13 @@
       :Access public   
       STYLE,←⍕style
       r←0
-    ∇       
+    ∇  
+    
+    ∇ {r}←addBody body
+      :Access public                
+      BODY,←⍕body
+      r←0
+    ∇        
     
     ∇ {r}←addParagraph p
       :Access public
@@ -120,7 +126,8 @@
     ∇ {r}←{m}addSelectInput args;gname;s1;s2;s3;labels;values   
       :Access public    
       labels←args
-      values←⍳≢labels 
+      values←⍳≢labels  
+      :If 0=⎕NC 'm' ⋄ m←''⋄ :EndIf
       BODY,←openNewDiv 
       gname←createNewGroup
       BODY,←'<select ',m,' class="s2" style="width:100%" name="',gname
@@ -191,7 +198,41 @@
       BODY,←∊{(⍕⍵),s1}¨args  
       BODY,←closeDiv       
       r←0
-    ∇       
+    ∇    
+    
+    ∇ {r}←addColorInput args;gname;s1
+      :Access public        
+      BODY,←openNewDiv
+      gname←createNewGroup 
+      s1←'<input type="color" name="'  
+      s1,←gname,'"><br>' 
+      BODY,←∊{(⍕⍵),s1}¨args  
+      BODY,←closeDiv       
+      r←0
+    ∇ 
+    
+    ∇ {r}←addFileInput args;gname;s1
+      :Access public        
+      BODY,←openNewDiv
+      gname←createNewGroup 
+      s1←'<input type="file" multiple name="'  
+      s1,←gname,'"><br>' 
+      BODY,←∊{(⍕⍵),s1}⍕args  
+      BODY,←closeDiv       
+      r←0
+    ∇ 
+    
+    ∇ {r}←addNumberInput args;gname;s1
+      :Access public        
+      BODY,←openNewDiv
+      gname←createNewGroup 
+      s1←'<input type="number" step="any" name="'  
+      s1,←gname,'"><br>' 
+      BODY,←∊{(⍕⍵),s1}¨args  
+      BODY,←closeDiv       
+      r←0
+    ∇     
+           
     
     ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
     ⍝ Private Utility Functions ⍝

@@ -4,6 +4,7 @@
      eraseLineBreaks←{⍵~⎕UCS 13}
      ns obj←⍺
      h size←⍵
+     h←h.clone ⍝ Do not mutate the passed in object
      obj.Coord←ns.Coord
      ⍝ if size is default (0 0), use size from ⍵
      obj.Size←{(0=+/⍵)⊃⍵ size}⍎⍕ns.Size
