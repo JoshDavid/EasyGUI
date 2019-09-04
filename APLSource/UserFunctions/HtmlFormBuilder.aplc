@@ -12,7 +12,9 @@
     :field private divCounter←¯1
     :field private groupCounter←¯1 
     :field private closeDiv←'</div>' 
-    :field public isForm←1 ⍝ Default yes  
+    :field public isForm←1 ⍝ Default yes    
+    :field private BR←'<BR>' ⍝ Line break 
+    :field private PAGE_CLASS←'PageClass'
 
     ∇ make    
       :Access public  
@@ -26,7 +28,7 @@
       :Implements constructor 
       :If 1=≢fieldValues
         isForm←fieldValues
-      :Else 
+      :Else
       ⍝ Assign fields in this object with the passed in values
         fnames←getFieldNames ''
         quote←(' ','''')[isChar¨fieldValues] ⍝ Single quote if char, else blank 
@@ -51,7 +53,13 @@
       :Access public          
       BTN_CAPTION←(isEmpty caption)⊃caption BTN_CAPTION              
       r←0
-    ∇
+    ∇     
+   
+    ∇ {r}←setPageClass class
+      :Access public          
+      PAGE_CLASS←⍕class            
+      r←0
+    ∇ 
    
     ∇ {r}←addHead head
       :Access public                
@@ -83,18 +91,19 @@
       r←0
     ∇
 
-    ∇ r←getHTML;tempH;tempB;formStart;formEnd;tempS
+    ∇ r←getHTML;tempH;tempB;formStart;formEnd;tempS;pageDiv
       :Access public
       ⍝ We do not overwrite the fields so that we can continue to add to the page after this call  
       tempH←HEAD,TITLE,'style' wrapTag STYLE
       tempH←'head' wrapTag tempH 
-      formStart formEnd ← ⊂''  
-      :If isForm
-        formStart←'<form method="post" action="cb" id="mainForm">'
+      pageDiv←'<div class="',PAGE_CLASS,'">'
+      formStart formEnd ← ⊂''      
+      :If isForm   
+        formStart←pageDiv,'<form method="post" action="cb" id="mainForm">'
         formEnd←'<input type="submit" id="btn" value="',BTN_CAPTION,'"></form>'
       :EndIf
-      tempS← 'script' wrapTag SCRIPT
-      tempB←'body' wrapTag (HEADING,formStart,BODY,formEnd,tempS)
+      tempS←'script' wrapTag SCRIPT
+      tempB←'body' wrapTag (pageDiv,HEADING,formStart,BODY,formEnd,closeDiv,tempS)
       r←⍕'html' wrapTag (tempH,tempB) 
     ∇    
    
@@ -217,7 +226,7 @@
       gname←createNewGroup 
       s1←'<input type="file" multiple name="'  
       s1,←gname,'"><br>' 
-      BODY,←∊{(⍕⍵),s1}⍕args  
+      BODY,←∊{(⍕⍵),s1}args  
       BODY,←closeDiv       
       r←0
     ∇ 
@@ -227,8 +236,8 @@
       BODY,←openNewDiv
       gname←createNewGroup 
       s1←'<input type="number" step="any" name="'  
-      s1,←gname,'"><br>' 
-      BODY,←∊{(⍕⍵),s1}¨args  
+      s1,←gname,'">' 
+      BODY,←∊{(⍕⍵,BR),s1}¨args  
       BODY,←closeDiv       
       r←0
     ∇     
@@ -244,7 +253,7 @@
     
     getFieldNames←{⎕THIS.⎕nl ¯2.2}
     
-    breakRows←{∊⍵(,⍤1)'<br>'}    
+    breakRows←{∊⍵(,⍤1)BR}    
      
     ∇ r←openNewDiv
       divCounter+←1
@@ -261,8 +270,8 @@
     ⍝ ⍺ ←→ s1..s3
     ⍝ ⍵ ←→ 2 item pair of a value and its label
       value label ← ⍕¨⍵ 
-      s1 s2 s3 ← ⍺  
-      ,/ s1 value s2 label s3
+      s1 s2 s3 ← ⍺     
+      ,/ s1 value s2 label BR s3 
     }
     
     link←{
@@ -270,7 +279,7 @@
     ⍝ ⍵ ←→ values labels
     ⍝ ← ←→ catenate this string to BODY      
       values labels ← ⍵ 
-      ∊ ⍺∘catenateAll¨ values pair labels
+      ∊ ⍺∘catenateAll¨ values pair labels   
     }                                 
     
 :EndClass

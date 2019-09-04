@@ -1,29 +1,22 @@
  FindFile←{
  ⍝ ⍺ ←→ Parameter namespace (Optional)
  ⍝ ⍵ ←→ Label to describe the file selection
- ⍝ ← ←→ The file name? working on this.
- ⍝⍝⍝ *** CURRENTLY in dev
+ ⍝ ← ←→ Full path to file
  ⍝ Getting a file currently changes the whole environment's directory
- ⍝ .. look at ]cd . Working on a way to preserve this right now and return the full file path
- ⍝ HTML currently can't display the path of the file for security reasons
- ⍝ Need to work around this
      ⎕PATH←'##.Utils'
      ⍺←''
      responseNS←setupUserResponse'Char'
      h←⎕NEW HtmlFormBuilder 1
-
      currentDirectory←{⊃1 ⎕NPARTS''}
-     ⍝Save Current Directory
-     dirBefore←currentDirectory''
+     dirBefore←currentDirectory'' ⍝ Save Current Directory
      _←h.addFileInput ⍵
-     size←25 15
+     size←20 20
      r←⍺ renderPage h size responseNS
-     ⍝ FileInput changes directory, set it back to what the user
-     ⍝ originally had
-     setDirectory←{⎕CMD'CD ',⍵}
-     ⍝ testing, does not currently work
+     ⍝ FileInput changes directory, set it back to what the user originally had
+     ⍝ For Security Reasons, HTML is not allowed to see the path to the file, just the name
+     ⍝ So we are taking extra measures to get the path
+     setDirectory←{⎕SE.SALTUtils.CD ⍵}
      filePath←currentDirectory''
      _←setDirectory dirBefore
-     filePath,r
-
+     ∊r,⍨⊂(¯1≢r)↑⊂filePath ⍝ Return full path + file, no path if aborted.
  }

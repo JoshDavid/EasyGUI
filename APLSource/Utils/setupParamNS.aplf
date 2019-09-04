@@ -10,5 +10,6 @@
      ns.Coord←'Prop'
      ns.BtnCaption←''
      ns.BtnPosn←''
+     ns.Theme←''
      ns
  }
