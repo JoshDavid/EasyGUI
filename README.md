@@ -1,12 +1,11 @@
-# CEF_Utility
-This is a lightweight utility library which creates dynamic GUI pages on the CEF (Chromium Embedded Framework) using the HtmlRenderer framework in Dyalog V.17. This allows for cross-platform compatible GUI pages (Pages generated will be displayed on Windows and Mac OS platforms -- hopefully Linux with V.17.1) To run this, all you need is Dyalog Version 17. You can download the files using acre desktop. Which can be downloaded for free by clicking [here](https://github.com/the-carlisle-group/Acre-Desktop/releases/tag/v5.0.0.074) 
+# EasyGUI
+This is a lightweight utility library which creates dynamic GUI pages on the CEF (Chromium Embedded Framework) using the HtmlRenderer framework in Dyalog V.17.1. This allows for cross-platform compatible GUI pages (Pages generated will be displayed on Windows, Mac OS and Linux. To run this, all you need is Dyalog Version 17. You can load the files into your workspace with ]link or by using acre desktop, which can be downloaded for free by clicking [here](https://github.com/the-carlisle-group/Acre-Desktop/releases/tag/v5.0.0.074) 
 
-Each folder in this repository represents a namespace in the workspace. #.CEF_Utility.UserFunctions are where the userfunctions are stored for use. Each one of these functions creates a dynamic page given your input. These functions can be used in any one of your functions to prompt for user response, or to simply display some information. There are three classes of functions that are provided:
+Each folder in this repository represents a namespace in the workspace. #.EasyGUI.UserFunctions are where the user functions are stored. Each one of these functions creates a dynamic page given your input. These functions can be used in any one of your functions to prompt for user response, or to simply display some information. There are three classes of functions that are provided:
 
   * Queries
   * Notifications
   * Graphics
-  
   
 The goal of each function is to produce a single graphical page. If we called a query function, the function will wait for the user input and then return the information about their response. The specific response returned will be documented on a function by function basis below. Notification pages will not wait for a response, because no response is needed -- a simple dialog box is shown to the users. Graphical pages can return references to update the visuals on the page. These pages will not wait for a response either. 
 
@@ -165,7 +164,7 @@ R← {p} DisplayProgressBar start max
 
 ## GUI Reference
 
-Inside #.CEF_Utility.UserFunctions is a namespace called 'GUI'. In it is a GUI that helps you build more customized forms. Run the niladic 'BuildForm' function to display the GUI. Leveraging the functions in the #.CEF_Utility.UserFunctions.HtmlFormBuilder class, you can build forms with multiple types of input. For example, you can add text fields, date pickers, radio buttons, styling, etc. and capture the result which returns a HtmlFormBuilder object in the namespace, called 'FormObj'. You can then pass this object, and a form size, to the renderPage function and use it to generate a custom page. The renderPage function will also accept, as its only left argument, a namespace result from the specifyParams function. 
+Inside #.EasyGUI.UserFunctions is a namespace called 'GUI'. In it is a GUI that helps you build more customized forms. Run the niladic 'BuildForm' function to display the GUI. Leveraging the functions in the #.EasyGUI.UserFunctions.HtmlFormBuilder class, you can build forms with multiple types of input. For example, you can add text fields, date pickers, radio buttons, styling, etc. and capture the result which returns a HtmlFormBuilder object in the namespace, called 'FormObj'. You can then pass this object, and a form size, to the renderPage function and use it to generate a custom page. The renderPage function will also accept, as its only left argument, a namespace result from the specifyParams function. 
 To access these functions from the GUI namespace: 
 
 ##.specifyParams
