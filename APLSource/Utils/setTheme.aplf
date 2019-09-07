@@ -1,10 +1,10 @@
  setTheme←{
-     ⍝ ⍵ ←→ theme name
+     ⍝ ⍵ ←→ Theme namespace
      ⍝ ⍺ ←← FormBuilder object
-     theme←'' 'StackedForm' 'SimpleLayout' ⍝ Theme lists
-     divClass←'' 'form-style-6' 'form-style-9' ⍝ Associated div class
-     css←''##.CSS.StackedForm ##.CSS.SimpleLayout
-     i←theme⍳⊂⍵
-     _←⍺.setPageClass⊃i⌷divClass
-     ⍺.addStyle i⌷css
+     isEmpty ⍵:0
+     isNS←{9=⎕NC ⍵}
+     theme←{w←'⍵' ⋄ isNS w:⍎⍵ ⋄ ⍵}⍵
+     _←⍺.setPageClass theme.PageClass
+     _←⍺.addStyle theme.CSS
+     0
  }

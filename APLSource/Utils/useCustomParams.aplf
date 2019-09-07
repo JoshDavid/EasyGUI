@@ -16,8 +16,9 @@
      _←h.addStyle eraseLineBreaks ns.CSS
      _←h.addJavaScript eraseLineBreaks ns.JavaScript
      _←h.setBtnCaption ns.BtnCaption
-     _←h.addStyle genBtnPosnCSS' 'split ns.BtnPosn
      _←h setTheme ns.Theme
+     _←h.addStyle h.PAGE_CLASS fitToPage⍎⍕ns.FitToPage
+     _←h.addStyle genBtnPosnCSS' 'split ns.BtnPosn
      obj.HTML←h.getHTML
      0
  }

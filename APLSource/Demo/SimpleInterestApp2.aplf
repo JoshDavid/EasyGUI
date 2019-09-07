@@ -1,9 +1,12 @@
  SimpleInterestApp2←{
      uf←##.UserFunctions
-     p←uf.specifyParams('Title' 'Simple Interest Calculator')
-     p.Size←85 40
-     p.Theme←'StackedForm'
+     p←uf.specifyParams'Title' 'Simple Interest Calculator'
+⍝     p.Size←85 40
+     p.Size←85 30
+     p.Theme←##.Themes.Light
      p.Header←'Calculate simple interest accrued'
+     p.FitToPage←1
+
      isForm←1
 
      ⍝ Leverage underlying class to combine different inputs
@@ -24,6 +27,7 @@
      msg,←⊂'Total Accrued = ',⍕accrued
      ⍝ Use the same parameter namespace, add some more custom styling
      p.CSS←'body{background-color:white;color:black}'
+     p.FitToPage←1
      p uf.NotifyInfo↑msg ⍝ Display a matrix where rows are broken up by lines
 
  }

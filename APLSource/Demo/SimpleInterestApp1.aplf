@@ -3,7 +3,7 @@
      p←specifyParams('Title' 'Simple Interest Calculator')
      p.Size←50 30
     ⍝ p.CSS←FormCSS
-     p.Theme←'StackedForm'
+     p.Theme←##.Themes.Light
      amt rate years←p PromptNumberInput'Principal Amount' 'Annual interest rate' 'Period in years'
      interest←amt×rate×years
      p.CSS←'body{background-color:white;color:black}'

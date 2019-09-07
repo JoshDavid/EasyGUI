@@ -1,0 +1,10 @@
+ fitToPage←{
+⍝ ⍵ ←→ Boolean indicating whether to fit to page or not
+⍝ ⍺ ←→ name of page class
+⍝ ← ←→ CSS to add that will stretch page contents
+     ~⍵:''
+     s←'.',⍺,',html,body{'
+     s,←'height:100%;width:100%;}'
+     s,←genBtnPosnCSS⊂'bottom'
+     s
+ }

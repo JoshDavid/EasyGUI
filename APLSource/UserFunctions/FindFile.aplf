@@ -10,7 +10,7 @@
      currentDirectory←{⊃1 ⎕NPARTS''}
      dirBefore←currentDirectory'' ⍝ Save Current Directory
      _←h.addFileInput ⍵
-     size←20 20
+     size←15 15
      r←⍺ renderPage h size responseNS
      ⍝ FileInput changes directory, set it back to what the user originally had
      ⍝ For Security Reasons, HTML is not allowed to see the path to the file, just the name

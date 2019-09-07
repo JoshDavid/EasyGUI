@@ -11,5 +11,6 @@
      ns.BtnCaption←''
      ns.BtnPosn←''
      ns.Theme←''
+     ns.FitToPage←0 ⍝ Default 0. 1 will stretch contents out
      ns
  }
