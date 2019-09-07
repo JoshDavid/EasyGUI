@@ -4,6 +4,7 @@
      eraseLineBreaks←{⍵~⎕UCS 13}
      ns obj←⍺
      h size←⍵
+     h←h.clone ⍝ Do not mutate the passed in object
      obj.Coord←ns.Coord
      ⍝ if size is default (0 0), use size from ⍵
      obj.Size←{(0=+/⍵)⊃⍵ size}⍎⍕ns.Size
@@ -15,6 +16,8 @@
      _←h.addStyle eraseLineBreaks ns.CSS
      _←h.addJavaScript eraseLineBreaks ns.JavaScript
      _←h.setBtnCaption ns.BtnCaption
+     _←h setTheme ns.Theme
+     _←h.addStyle h.PAGE_CLASS fitToPage⍎⍕ns.FitToPage
      _←h.addStyle genBtnPosnCSS' 'split ns.BtnPosn
      obj.HTML←h.getHTML
      0

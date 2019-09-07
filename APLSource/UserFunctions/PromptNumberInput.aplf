@@ -1,0 +1,12 @@
+ PromptNumberInput←{
+ ⍝ ⍺ ←→ Parameter namespace (Optional)
+ ⍝ ⍵ ←→ n labels for n number inputs
+ ⍝ ← ←→ User input results
+     ⎕PATH←'##.Utils'
+     ⍺←''
+     responseNS←setupUserResponse'Int'
+     h←⎕NEW HtmlFormBuilder 1
+     _←h.addNumberInput ⍵
+     size←25 20
+     ⍺ renderPage h size responseNS
+ }

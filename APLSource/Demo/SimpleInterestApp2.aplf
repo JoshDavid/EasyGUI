@@ -1,0 +1,33 @@
+ SimpleInterestApp2←{
+     uf←##.UserFunctions
+     p←uf.specifyParams'Title' 'Simple Interest Calculator'
+⍝     p.Size←85 40
+     p.Size←85 30
+     p.Theme←##.Themes.Light
+     p.Header←'Calculate simple interest accrued'
+     p.FitToPage←1
+
+     isForm←1
+
+     ⍝ Leverage underlying class to combine different inputs
+     h←⎕NEW uf.HtmlFormBuilder isForm
+     _←h.addNumberInput⊂'Interest rate'
+     _←h.addParagraph⊂'per'
+     _←h.addSelectInput'Year' 'Half-year' 'Quarter' 'Month' 'Week' 'Day'
+     _←h.addDateInput⊂'From'
+     _←h.addDateInput⊂'To'
+     _←h.addNumberInput⊂'Initial amount'
+     _←h.addParagraph⊂'Currency'
+     _←h.addSelectInput'$' '£'
+
+     userInput←p ##.Utils.renderPage h
+     userInput≡¯1:0 ⍝ Exit if no input
+     interest accrued time←calcIAT userInput
+     msg←⊂'Interest over ',(⍕time),' days = ',⍕interest
+     msg,←⊂'Total Accrued = ',⍕accrued
+     ⍝ Use the same parameter namespace, add some more custom styling
+     p.CSS←'body{background-color:white;color:black}'
+     p.FitToPage←1
+     p uf.NotifyInfo↑msg ⍝ Display a matrix where rows are broken up by lines
+
+ }

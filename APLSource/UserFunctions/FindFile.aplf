@@ -1,0 +1,22 @@
+ FindFile←{
+ ⍝ ⍺ ←→ Parameter namespace (Optional)
+ ⍝ ⍵ ←→ Label to describe the file selection
+ ⍝ ← ←→ Full path to file
+ ⍝ Getting a file currently changes the whole environment's directory
+     ⎕PATH←'##.Utils'
+     ⍺←''
+     responseNS←setupUserResponse'Char'
+     h←⎕NEW HtmlFormBuilder 1
+     currentDirectory←{⊃1 ⎕NPARTS''}
+     dirBefore←currentDirectory'' ⍝ Save Current Directory
+     _←h.addFileInput ⍵
+     size←15 15
+     r←⍺ renderPage h size responseNS
+     ⍝ FileInput changes directory, set it back to what the user originally had
+     ⍝ For Security Reasons, HTML is not allowed to see the path to the file, just the name
+     ⍝ So we are taking extra measures to get the path
+     setDirectory←{⎕SE.SALTUtils.CD ⍵}
+     filePath←currentDirectory''
+     _←setDirectory dirBefore
+     ∊r,⍨⊂(¯1≢r)↑⊂filePath ⍝ Return full path + file, no path if aborted.
+ }

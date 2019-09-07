@@ -8,5 +8,7 @@
      t,←'addStyle' 'CSS'
      t,←'addTextInput' 'Labels'
      t,←'addParagraph' 'Paragraph'
+     t,←'addNumberInput' 'Labels'
+     t,←'addFileInput' 'Label'
      t
  }

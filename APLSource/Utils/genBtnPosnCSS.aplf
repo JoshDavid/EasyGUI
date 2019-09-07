@@ -4,6 +4,6 @@
      css←'#btn {'
      css,←'position:fixed;'
      css,←'padding:5;'
-     css,←(⍵,¨⊂':0;'),';'
+     css,←(⍵,¨⊂':0;'),'}'
      css
  }
