@@ -1,11 +1,9 @@
  SimpleInterestApp2←{
      uf←##.UserFunctions
      p←uf.specifyParams'Title' 'Simple Interest Calculator'
-⍝     p.Size←85 40
      p.Size←85 30
      p.Theme←##.Themes.Light
      p.Header←'Calculate simple interest accrued'
-     p.FitToPage←1
 
      isForm←1
 
