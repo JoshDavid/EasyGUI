@@ -30,6 +30,8 @@ R ←specifyParams args
 		- This text will be inserted between 'style' tags in the page.
 	-	Coord
 		- Coordinate system the page will follow. 'Prop' by default
+	- 	FitToPage
+		- Boolean indicating whether you want your content to stretch across the entire page. Defaults to 0. 
 	-	Head
 		- This text will be inserted between 'head' tags in the page.
 	-	Header
@@ -42,6 +44,8 @@ R ←specifyParams args
 		 - Page size. This is a 2 item integer vector of Y and X values, respectively.
 	-	Title
 		 - Page title. 
+	- 	Theme
+		 - A reference to a Theme in the 'Themes' namespace. Your page will follow the theme styles
 	-	BtnCaption
 		- Submit button caption. Defaults to 'OK'
 	-	BtnPosn
@@ -64,6 +68,23 @@ R← {p} AskYesNo msg
 - R is the result of the function. R is an Integer. 
   - ¯1 : Page was aborted. The page was closed before a response was submitted. 
   -  0 : ‘No’ was selected
+- Msg is the question you want to ask. This will be displayed as text
+
+∇ FindFile ∇
+
+R← {p} FindFile desc
+
+- P is the namespace result of the ‘specifyParams’ function. P is optional. 
+- R is the result of the function. R is the full path of the file. 
+- Desc is a description or instructions for the user. This message will be associated with the file input button
+
+∇ DisplaySVG ∇
+
+{p} DisplaySVG svg
+
+- P is the namespace result of the ‘specifyParams’ function. P is optional. 
+- svg is the actual svg of the image. This can be easily be obtained from a sharpplot image by the RenderSvg method.
+
 ∇ PickDate ∇
 
 R←{p} PickDate labels
@@ -71,6 +92,14 @@ R←{p} PickDate labels
 - P is the namespace result of the ‘specifyParams’ function. P is optional.  
 - R is the result of the function. R is the date returned selected by the User. This date is returned in the 'YYYY-MM-DD' format. R is ¯1 if the page was closed before a response was submitted. R is Character, unless the page was aborted then an Integer ¯1 is returned.  The length of R is equal to the length of labels. 
 - Labels is a list of labels that will precede each date picker object. Labels can be a vector of items or a single item. Character, Numeric, or Mixed.
+
+∇ PromptNumberInput ∇
+
+R← {p} PromptNumberInput labels
+
+- P is the namespace result of the ‘specifyParams’ function. P is optional. 
+- R is the result of the function. R is the response the user has entered and submit into each number input. R is Numeric and can be Integers or Floats. unless the page was aborted then an Integer ¯1 is returned. The length of R is equal to the length of labels.
+- Labels is a list of labels that will precede each number input box. Labels can be a vector of items or a single item. Character, Numeric, or Mixed.
 
 ∇ PromptTextInput ∇
 
@@ -163,6 +192,8 @@ R← {p} DisplayProgressBar start max
 - Max is the maximum value of the progress bar. Numeric. 
 
 ## GUI Reference
+
+# This feature is deprecated
 
 Inside #.EasyGUI.UserFunctions is a namespace called 'GUI'. In it is a GUI that helps you build more customized forms. Run the niladic 'BuildForm' function to display the GUI. Leveraging the functions in the #.EasyGUI.UserFunctions.HtmlFormBuilder class, you can build forms with multiple types of input. For example, you can add text fields, date pickers, radio buttons, styling, etc. and capture the result which returns a HtmlFormBuilder object in the namespace, called 'FormObj'. You can then pass this object, and a form size, to the renderPage function and use it to generate a custom page. The renderPage function will also accept, as its only left argument, a namespace result from the specifyParams function. 
 To access these functions from the GUI namespace: 
