@@ -70,6 +70,13 @@ R← {p} AskYesNo msg
   -  0 : ‘No’ was selected
 - Msg is the question you want to ask. This will be displayed as text
 
+∇ DisplaySVG ∇
+
+{p} DisplaySVG svg
+
+- P is the namespace result of the ‘specifyParams’ function. P is optional. 
+- svg is the actual svg of the image. This can be easily be obtained from a sharpplot image by the RenderSvg method.
+
 ∇ FindFile ∇
 
 R← {p} FindFile desc
@@ -78,12 +85,13 @@ R← {p} FindFile desc
 - R is the result of the function. R is the full path of the file. 
 - Desc is a description or instructions for the user. This message will be associated with the file input button
 
-∇ DisplaySVG ∇
+∇ MakeForm ∇
 
-{p} DisplaySVG svg
+R← {p} FindFile ((InputType)(Labels))...((InputType)(Labels))
 
 - P is the namespace result of the ‘specifyParams’ function. P is optional. 
-- svg is the actual svg of the image. This can be easily be obtained from a sharpplot image by the RenderSvg method.
+- R is the result of the function. R is the same length as the amount of elements in the right argument.
+- The right argument consists of a vector where each item in the vector is a 2 element vector of the InputType followed by the Labels for that InputType.
 
 ∇ PickDate ∇
 
