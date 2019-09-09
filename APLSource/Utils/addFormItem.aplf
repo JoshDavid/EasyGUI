@@ -1,0 +1,14 @@
+ addFormItem←{
+     ⍝ ⍺ ←→ form object
+     ⍝ ⍵ ←→ (InputType) (Value)
+     ⍝ Add to object
+     ⍝ Last minute addition. Jump table implemenetation may be more efficient.
+     type v←⍵
+     type≡'Number':⍺.addNumberInput v
+     type≡'Date':⍺.addDateInput v
+     type≡'Text':⍺.addTextInput v
+     type≡'Radio':⍺.addRadioInput v(⍳≢⍵)
+     type≡'Select':⍺.addSelectInput v
+     type≡'Paragraph':⍺.addParagraph v
+     0
+ }

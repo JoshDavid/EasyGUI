@@ -1,0 +1,11 @@
+ MakeForm←{
+⍝ ⍵ ←→ A list where each element is a 2 item vector specifying (InputType)(Values)
+⍝ ← ←→ response grouped by each element in ⍵
+     ⎕PATH←'##.Utils'
+     ⍺←''
+     responseNS←setupUserResponse'Char'
+     h←⎕NEW HtmlFormBuilder 1
+     _←h addFormItem¨⍵
+     size←50 50
+     ⍺ renderPage h size responseNS
+ }

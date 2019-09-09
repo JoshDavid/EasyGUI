@@ -2,8 +2,7 @@
      ⍝ ⍵ ←→ Theme namespace
      ⍝ ⍺ ←← FormBuilder object
      isEmpty ⍵:0
-     isNS←{9=⎕NC ⍵}
-     theme←{w←'⍵' ⋄ isNS w:⍎⍵ ⋄ ⍵}⍵
+     theme←{(9=⎕NC'⍵'):⍵ ⋄ ⍎⍵}⍵
      _←⍺.setPageClass theme.PageClass
      _←⍺.addStyle theme.CSS
      0

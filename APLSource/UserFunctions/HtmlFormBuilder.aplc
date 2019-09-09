@@ -93,7 +93,7 @@
       r←0
     ∇
 
-    ∇ r←getHTML;tempH;tempB;formStart;formEnd;tempS;pageDiv
+    ∇ r←getHTML;tempH;tempB;formStart;formEnd;tempS;pageDiv;doc
       :Access public
       ⍝ We do not overwrite the fields so that we can continue to add to the page after this call  
       tempH←HEAD,TITLE,'style' wrapTag STYLE
@@ -105,8 +105,9 @@
         formEnd←'<input type="submit" id="btn" value="',BTN_CAPTION,'"></form>'
       :EndIf
       tempS←'script' wrapTag SCRIPT
-      tempB←'body' wrapTag (pageDiv,HEADING,formStart,BODY,formEnd,closeDiv,tempS)
-      r←⍕'html' wrapTag (tempH,tempB) 
+      tempB←'body' wrapTag (pageDiv,HEADING,formStart,BODY,formEnd,closeDiv,tempS)  
+      doc←'<!DOCTYPE html>'
+      r←⍕doc,('html' wrapTag (tempH,tempB))
     ∇    
    
     ∇ {r}←{t} addHeading msg;header;h;m
