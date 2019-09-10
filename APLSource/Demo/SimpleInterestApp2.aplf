@@ -27,6 +27,7 @@
 ⍝     i,←⊂('Number'(⊂'Initial amount'))
 ⍝     i,←⊂('Paragraph'(⊂'Currency'))
 ⍝     i,←⊂('Select'('$' '£'))
+⍝     userInput←p uf.MakeForm i
 
 
      userInput←p ##.Utils.renderPage h
@@ -36,7 +37,7 @@
      msg,←⊂'Total Accrued = ',⍕accrued
      ⍝ Use the same parameter namespace, add some more custom styling
      p.CSS←'body{background-color:white;color:black}'
-     p.FitToPage←1
+     p.FitToPage←0
      p uf.NotifyInfo↑msg ⍝ Display a matrix where rows are broken up by lines
 
  }
