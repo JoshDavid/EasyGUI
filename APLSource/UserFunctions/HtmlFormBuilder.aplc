@@ -262,14 +262,14 @@
     ⍝ ⍵ ←→ 2 item pair of a value and its label
       value label ← ⍕¨⍵ 
       s1 s2 s3 ← ⍺     
-      ,/ s1 value s2 label BR s3 
+      'label' wrapTag ,/ s1 value s2 label BR s3 
     }
     
     link←{
     ⍝ ⍺ ←→ s1..s3
     ⍝ ⍵ ←→ values labels
     ⍝ ← ←→ catenate this string to BODY      
-      values labels ← ⍵ 
+      values labels ← ⍵   
       ∊ ⍺∘catenateAll¨ values pair labels   
     } 
     
@@ -277,8 +277,8 @@
     ⍝ Catenate a label and the input type
     ⍝ And add a line break after each item
     ⍝ ⍵ ←→ label
-    ⍝ ⍺ ←→ input type string 
-      (⍕⍵),BR,⍺,BR
+    ⍝ ⍺ ←→ input type string    
+      'label' wrapTag (⍕⍵),BR,⍺,BR
     }       
                                 
     
