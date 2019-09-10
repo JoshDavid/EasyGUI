@@ -68,13 +68,6 @@ R← {p} AskYesNo msg
   -  0 : ‘No’ was selected
 - Msg is the question you want to ask. This will be displayed as text
 
-∇ DisplaySVG ∇
-
-{p} DisplaySVG svg
-
-- P is the namespace result of the ‘specifyParams’ function. P is optional. 
-- svg is the actual svg of the image. This can be easily be obtained from a sharpplot image by the RenderSvg method.
-
 ∇ FindFile ∇
 
 R← {p} FindFile desc
@@ -85,7 +78,7 @@ R← {p} FindFile desc
 
 ∇ MakeForm ∇
 
-R← {p} FindFile ((InputType)(Labels))...((InputType)(Labels))
+R← {p} MakeForm ((InputType)(Labels))...((InputType)(Labels))
 
 - P is the namespace result of the ‘specifyParams’ function. P is optional. 
 - R is the result of the function. R is the same length as the amount of elements in the right argument.
@@ -196,6 +189,13 @@ R← {p} DisplayProgressBar start max
   - 'close' function which takes a dummy argument to close the form.
 - Start is the starting value of the progress bar. Numeric.
 - Max is the maximum value of the progress bar. Numeric. 
+
+∇ DisplaySVG ∇
+
+{p} DisplaySVG svg
+
+- P is the namespace result of the ‘specifyParams’ function. P is optional. 
+- svg is the actual svg of the image. This can be easily be obtained from a sharpplot image by the RenderSvg method.
 
 ## GUI Reference
 
