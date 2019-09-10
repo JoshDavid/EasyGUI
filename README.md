@@ -11,8 +11,6 @@ The goal of each function is to produce a single graphical page. If we called a 
 
 These functions are designed with minimal styling. All these functions take one, optional left argument that is the result of the ‘specifyParams’ function. Use this function to further describe how you want your page styled and other details about the page. 
 
-An optional GUI is provided in the UserFuntions namespace. You can use this GUI to help design more customized forms, using the HtmlFormBuilder class. Of course the GUI folder could easily be deleted if it is not desired. 
-
 ## UserFunctions Reference
 
 ⎕IO is 0 
