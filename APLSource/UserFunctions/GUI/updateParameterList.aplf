@@ -1,5 +1,0 @@
- updateParameterList←{
-     l←⊃⍵
-     p←getParametersFor l.SelItems/l.Items
-     displayParams p
- }
