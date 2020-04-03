@@ -2,7 +2,7 @@
 ⍝ ⍵ ←→ Character vector
 ⍝ ← ←→ ⍵ but with UCS vals > 255 escaped for HTML
      ucs←⎕UCS w←⍵  ⍝ UCS representation
-     idx←ucs>255   ⍝ Indicies of vals we want to escape
+     idx←ucs>255   ⍝ Indices of vals we want to escape
      key←⊂'&#'     ⍝ Escape Key
      v←key(,∘⍕)¨idx/ucs ⍝ New values
      (idx/w)←v     ⍝ Insert new values
