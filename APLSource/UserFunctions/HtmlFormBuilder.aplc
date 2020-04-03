@@ -107,7 +107,7 @@
       tempS←'script' wrapTag SCRIPT
       tempB←'body' wrapTag (pageDiv,HEADING,formStart,BODY,formEnd,closeDiv,tempS)  
       doc←'<!DOCTYPE html>'
-      r←⍕doc,('html' wrapTag (tempH,tempB))
+      r←⍕ escapeUnicode doc,('html' wrapTag (tempH,tempB))
     ∇    
    
     ∇ {r}←{t} addHeading msg;header;h;m
