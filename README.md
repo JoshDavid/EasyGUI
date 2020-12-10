@@ -68,14 +68,6 @@ R← {p} AskYesNo msg
   -  0 : ‘No’ was selected
 - Msg is the question you want to ask. This will be displayed as text
 
-∇ FindFile ∇
-
-R← {p} FindFile desc
-
-- P is the namespace result of the ‘specifyParams’ function. P is optional. 
-- R is the result of the function. R is the full path of the file. 
-- Desc is a description or instructions for the user. This message will be associated with the file input button
-
 ∇ MakeForm ∇
 
 R← {p} MakeForm ((InputType)(Labels))...((InputType)(Labels))
