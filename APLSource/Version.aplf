@@ -1,3 +1,4 @@
  Version←{
      '1.0.1' ⍝ Decode URL encoded data. Start tracking Version
+     '1.0.2' ⍝ Notification functions now return a result
  }

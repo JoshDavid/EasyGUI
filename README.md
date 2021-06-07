@@ -134,7 +134,7 @@ R ← {p} SelectOneRadio options
 
 R ← {p} NotifyError msg
 - P is the namespace result of the ‘specifyParams’ function. P is optional. 
-- R is non-existent right now. No result is currently returned. May change this to return a shy result 
+- R is an empty char
 - Msg is the message you want displayed in the dialog box. Msg can be an array of items or a single item. Character, Numeric, or Mixed. If Msg is a matrix, line breaks will be added to each row.
 
 This function displays a dialog box with a red background and white text color. 
@@ -144,7 +144,7 @@ This function displays a dialog box with a red background and white text color.
 R ← {p} NotifyInfo msg
 
 - P is the namespace result of the ‘specifyParams’ function. P is optional.  
-- R is nonexistent right now. No result is currently returned. May change this to return a shy result 
+- R is an empty char 
 - Msg is the message you want displayed in the dialog box. Msg can be an array of items or a single item. Character, Numeric, or Mixed. If Msg is a matrix, line breaks will be added to each row.
 
 This functions displays a dialog box with a blue background and white text color. 
@@ -153,7 +153,7 @@ This functions displays a dialog box with a blue background and white text color
 
 R ← {p} NotifySuccess msg
 - P is the namespace result of the ‘specifyParams’ function. P is optional.  
-- R is nonexistent right now. No result is currently returned. May change this to return a shy result 
+- R is an empty char 
 - Msg is the message you want displayed in the dialog box. Msg can be an array of items or a single item. Character, Numeric, or Mixed. If Msg is a matrix, line breaks will be added to each row.
   
 This function displays a dialog box with a green background and white text color. 
@@ -163,7 +163,7 @@ This function displays a dialog box with a green background and white text color
 R ← {p} NotifyWarning msg
 
 - P is the namespace result of the ‘specifyParams’ function. P is optional.  
-- R is nonexistent right now. No result is currently returned. May change this to return a shy result 
+- R is an empty char 
 - Msg is the message you want displayed in the dialog box. Msg can be an array of items or a single item. Character, Numeric, or Mixed. If Msg is a matrix, line breaks will be added to each row.
 
 This function displays a dialog box with an orange background and white text color. 
