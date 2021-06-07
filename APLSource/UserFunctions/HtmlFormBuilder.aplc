@@ -3,7 +3,7 @@
  ⎕IO←0
 
     :field private TITLE←''
-    :field private HEAD←''
+    :field private HEAD←'<meta charset="UTF-8">'
     :field private STYLE←''
     :field private HEADING←''
     :field private BODY←''  

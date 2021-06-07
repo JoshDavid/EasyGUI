@@ -1,0 +1,5 @@
+ HexToDec←{
+⍝ ⍵ ←→ Hexadecimal string
+⍝ ← ←→ Decimal value
+     16⊥(⎕D,⎕A)⍳⍵
+ }

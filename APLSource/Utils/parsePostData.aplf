@@ -1,7 +1,7 @@
  parsePostData←{
  ⍝ ⍵ ←→ Postdata
  ⍝ ← ←→ Group values partitioned by unique group names
-     g←'&'split ⍵                ⍝ Split by '&'
+     g←'&'split DecodeURL ⍵
      names←(⍸¨'='⍷¨g)↑¨g         ⍝ group names
      startI←{⍵⍳∪⍵}names          ⍝ Get unique start indices
      numOfGroups←≢startI         ⍝

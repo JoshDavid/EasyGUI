@@ -1,0 +1,10 @@
+ DecodeURL←{
+⍝ See https://www.w3schools.com/tags/ref_urlencode.ASP
+⍝ Assumes page uses UTF-8 charset
+⍝ ⍵ ←→ Post Data charvec
+     nHex←2
+     pat←'(%[0-9a-fA-F]{',(⍕nHex),'})+' ⍝ % followed by 2 hexadecimal characters
+     FixSpace←{∊(⊂'%20')@{⍵='+'}⍵}
+     txt←FixSpace ⍵
+     (pat ⎕R{UTF8 HexToDec¨nHex NPartition ⍵.Match~'%'})txt
+ }
